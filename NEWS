@@ -1,7 +1,6 @@
-itertools 0.1
--------------
+# itertools 0.1
 
-NEW FEATURES
+## Iterators
 
-* TODO: Feed me.
+* `count()`: Neverending numeric sequence with initial value and step size.
 
