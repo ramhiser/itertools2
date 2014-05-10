@@ -4,3 +4,5 @@
 
 * `count()`: Neverending numeric sequence with initial value and step size.
 
+* `irepeat()`: Iterator that returns an object indefinitely unless a specified
+  number of times is given.

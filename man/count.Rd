@@ -1,6 +1,6 @@
 \name{count}
 \alias{count}
-\title{itertools2: Functions creating iterators for efficient looping}
+\title{Iterator of neverending numeric sequence with initial value and step size}
 \usage{
 count(start = 0, step = 1)
 }
