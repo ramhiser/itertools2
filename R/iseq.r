@@ -20,28 +20,51 @@
 #' nextElem(it2)
 #' nextElem(it2)
 #' nextElem(it2)
-iseq <- function(from=1, to=1, by = ((to - from)/(length_out - 1)),
+iseq <- function(from=1, to=1, by=((to - from)/(length_out - 1)),
                  length_out=NULL, along_with=NULL) {
   from <- as.numeric(from)
   to <- as.numeric(to)
 
-  if (length(start) != 1) {
-    stop("'start' must be a numeric value of length 1")
+  if (length(from) != 1) {
+    stop("'from' must be a numeric value of length 1")
   }
-  if (length(step) != 1) {
+  if (length(to) != 1) {
     stop("'step' must be a numeric value of length 1")
   }
 
-  current_val <- start - step
+  i <- 0
   nextElem <- function() {
-    current_val <<- current_val + step
-    current_val
+    i <<- 1
+    i
   }
 
   it <- list(nextElem=nextElem)
   class(it) <- c("abstractiter", "iter")
   it
 }
+
+iseq_int <- function(from, to, length_out, along_with) {
+  from <- as.numeric(from)
+  to <- as.numeric(to)
+
+  if (length(from) != 1) {
+    stop("'from' must be a numeric value of length 1")
+  }
+  if (length(to) != 1) {
+    stop("'step' must be a numeric value of length 1")
+  }
+
+  i <- 0
+  nextElem <- function() {
+    i <<- 1
+    i
+  }
+
+  it <- list(nextElem=nextElem)
+  class(it) <- c("abstractiter", "iter")
+  it
+}
+
 
 iseq_len <- function(length_out=NULL) {
   length_out <- silent(as.integer(length_out))
@@ -87,12 +110,12 @@ iseq_along <- function(along_with=NULL) {
   it
 }
 
-# TODO: Add docs for iseq_len
-# TODO: Add docs for iseq_along
 # TODO: Add stub for iseq
 # TODO: Add stub for iseq_int
 # TODO: Add test for iseq
 # TODO: Add test for iseq_int
+# TODO: Add docs for iseq_len
+# TODO: Add docs for iseq_along
 # TODO: Add docs for iseq
 # TODO: Add docs for iseq_int
 # TODO: Determine how to combine docs for iseq family into same Rd file

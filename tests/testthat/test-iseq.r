@@ -1,20 +1,24 @@
 context("iseq family of iterators")
 
+test_that("iseq with default parameters yields only 1 and then StopIteration", {
+  it <- iseq()
+  expect_equal(nextElem(it), 1)
+  expect_error(nextElem(it), "StopIteration")
+})
+
+test_that("iseq with default parameters yields only 1 and then StopIteration", {
+  it <- iseq()
+  expect_equal(nextElem(it), 1)
+  expect_error(nextElem(it), "StopIteration")
+})
+
+
 test_that("iseq_len generates a finite sequence of integers", {
   it <- iseq_len(4)
-
-  i <- nextElem(it)
-  expect_equal(i, 1)
-
-  i <- nextElem(it)
-  expect_equal(i, 2)
-
-  i <- nextElem(it)
-  expect_equal(i, 3)
-
-  i <- nextElem(it)
-  expect_equal(i, 4)
-
+  expect_equal(nextElem(it), 1)
+  expect_equal(nextElem(it), 2)
+  expect_equal(nextElem(it), 3)
+  expect_equal(nextElem(it), 4)
   expect_error(nextElem(it), "StopIteration")
 })
 
@@ -25,40 +29,20 @@ test_that("First element of iseq_len with length 0 yields StopIteration", {
 
 test_that("iseq_along's generate a finite sequence of integers from a vector", {
   it <- iseq_along(1:4)
-
-  i <- nextElem(it)
-  expect_equal(i, 1)
-
-  i <- nextElem(it)
-  expect_equal(i, 2)
-
-  i <- nextElem(it)
-  expect_equal(i, 3)
-
-  i <- nextElem(it)
-  expect_equal(i, 4)
-
+  expect_equal(nextElem(it), 1)
+  expect_equal(nextElem(it), 2)
+  expect_equal(nextElem(it), 3)
+  expect_equal(nextElem(it), 4)
   expect_error(nextElem(it), "StopIteration")
 })
 
 test_that("iseq_along's generate a finite sequence of integers from a data.frame", {
   it <- iseq_along(iris)
-
-  i <- nextElem(it)
-  expect_equal(i, 1)
-
-  i <- nextElem(it)
-  expect_equal(i, 2)
-
-  i <- nextElem(it)
-  expect_equal(i, 3)
-
-  i <- nextElem(it)
-  expect_equal(i, 4)
-
-  i <- nextElem(it)
-  expect_equal(i, 5)
-
+  expect_equal(nextElem(it), 1)
+  expect_equal(nextElem(it), 2)
+  expect_equal(nextElem(it), 3)
+  expect_equal(nextElem(it), 4)
+  expect_equal(nextElem(it), 5)
   expect_error(nextElem(it), "StopIteration")
 })
 
