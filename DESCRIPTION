@@ -9,6 +9,8 @@ Description: A port of Python's excellent itertools module to R for efficient
 Depends:
     R (>= 2.14.0),
     iterators (>= 1.0.7)
+Imports:
+    Kmisc (>= 0.5.0)
 Suggests:
     testthat (>= 0.8.1)
 License: MIT + file LICENSE
