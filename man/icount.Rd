@@ -1,8 +1,8 @@
-\name{count}
-\alias{count}
+\name{icount}
+\alias{icount}
 \title{Iterator of neverending numeric sequence with initial value and step size}
 \usage{
-count(start = 0, step = 1)
+icount(start = 0, step = 1)
 }
 \arguments{
   \item{start}{sequence's initial value}
@@ -15,7 +15,7 @@ sequence's iterator
 \description{
 Constructs an iterator that generates a neverending
 sequence of evenly spaced values starting with
-\code{count}. The step size is given by \code{step}.
+\code{icount}. The step size is given by \code{step}.
 }
 \details{
 NOTE: Use a negative \code{step} size to generate
@@ -25,12 +25,12 @@ Often used as an argument to \code{\link[itertools2]{imap}}
 to generate consecutive data points.
 }
 \examples{
-it <- count()
+it <- icount()
 nextElem(it)
 nextElem(it)
 nextElem(it)
 
-it2 <- count(start=5.5, step=1.5)
+it2 <- icount(start=5.5, step=1.5)
 nextElem(it2)
 nextElem(it2)
 nextElem(it2)

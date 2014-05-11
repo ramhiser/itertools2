@@ -1,7 +1,7 @@
 #' Iterator of neverending numeric sequence with initial value and step size
 #'
 #' Constructs an iterator that generates a neverending sequence of evenly spaced
-#' values starting with \code{count}. The step size is given by \code{step}.
+#' values starting with \code{icount}. The step size is given by \code{step}.
 #'
 #' NOTE: Use a negative \code{step} size to generate decreasing sequences.
 #'
@@ -14,16 +14,16 @@
 #' @return sequence's iterator
 #' 
 #' @examples
-#' it <- count()
+#' it <- icount()
 #' nextElem(it)
 #' nextElem(it)
 #' nextElem(it)
 #' 
-#' it2 <- count(start=5.5, step=1.5)
+#' it2 <- icount(start=5.5, step=1.5)
 #' nextElem(it2)
 #' nextElem(it2)
 #' nextElem(it2)
-count <- function(start=0, step=1) {
+icount <- function(start=0, step=1) {
   start <- as.numeric(start)
   step <- as.numeric(step)
 

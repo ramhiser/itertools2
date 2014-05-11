@@ -1,4 +1,4 @@
-export(count)
+export(icount)
 export(icycle)
 export(irepeat)
 importFrom(iterators,iter)

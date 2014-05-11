@@ -1,7 +1,7 @@
-context("count iterator: Infinite sequence")
+context("icount iterator: Infinite sequence")
 
-test_that("count's default values generate the sequence 0, 1, 2, ..", {
-  it <- count()
+test_that("icount's default values generate the sequence 0, 1, 2, ..", {
+  it <- icount()
 
   i <- nextElem(it)
   expect_equal(i, 0)
@@ -16,8 +16,8 @@ test_that("count's default values generate the sequence 0, 1, 2, ..", {
   expect_equal(i, 3)
 })
 
-test_that("count works with a given initial value", {
-  it <- count(start=42)
+test_that("icount works with a given initial value", {
+  it <- icount(start=42)
 
   i <- nextElem(it)
   expect_equal(i, 42)
@@ -32,8 +32,8 @@ test_that("count works with a given initial value", {
   expect_equal(i, 45)
 })
 
-test_that("count works with a decimal step size", {
-  it <- count(start=42, step=1.5)
+test_that("icount works with a decimal step size", {
+  it <- icount(start=42, step=1.5)
 
   i <- nextElem(it)
   expect_equal(i, 42)

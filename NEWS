@@ -2,7 +2,7 @@
 
 ## Iterators
 
-* `count()`: Neverending numeric sequence with initial value and step size.
+* `icount()`: Neverending numeric sequence with initial value and step size.
 
 * `icycle()`: Iterator that cycles indefinitely through an iterable object
 
