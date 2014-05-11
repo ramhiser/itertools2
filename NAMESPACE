@@ -1,2 +1,5 @@
 export(count)
+export(icycle)
 export(irepeat)
+importFrom(iterators,iter)
+importFrom(iterators,nextElem)
