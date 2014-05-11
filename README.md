@@ -17,5 +17,5 @@ If you prefer to download the latest version, instead type:
 
 ```r
 library(devtools)
-install_github('itertools2', 'ramhiser')
+install_github('ramhiser/itertools2')
 ```
