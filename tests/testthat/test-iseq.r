@@ -6,12 +6,42 @@ test_that("iseq with default parameters yields only 1 and then StopIteration", {
   expect_error(nextElem(it), "StopIteration")
 })
 
-test_that("iseq with default parameters yields only 1 and then StopIteration", {
-  it <- iseq()
-  expect_equal(nextElem(it), 1)
+test_that("iseq with only from and to specified", {
+  it <- iseq(from=2, to=5.5)
+  expect_equal(nextElem(it), 2)
+  expect_equal(nextElem(it), 3)
+  expect_equal(nextElem(it), 4)
+  expect_equal(nextElem(it), 5)
   expect_error(nextElem(it), "StopIteration")
 })
 
+test_that("iseq with by specified", {
+  it <- iseq(from=2, to=3.5, by=0.6)
+  expect_equal(nextElem(it), 2)
+  expect_equal(nextElem(it), 2.6)
+  expect_equal(nextElem(it), 3.2)
+  expect_error(nextElem(it), "StopIteration")
+})
+
+test_that("iseq with length_out specified", {
+  it <- iseq(from=2, to=3.5, length_out=5)
+  expect_equal(nextElem(it), 2)
+  expect_equal(nextElem(it), 2.375)
+  expect_equal(nextElem(it), 2.75)
+  expect_equal(nextElem(it), 3.125)
+  expect_equal(nextElem(it), 3.5)
+  expect_error(nextElem(it), "StopIteration")
+})
+
+test_that("iseq with along_with specified", {
+  it <- iseq(from=2, to=3.5, along_with=1:5)
+  expect_equal(nextElem(it), 2)
+  expect_equal(nextElem(it), 2.375)
+  expect_equal(nextElem(it), 2.75)
+  expect_equal(nextElem(it), 3.125)
+  expect_equal(nextElem(it), 3.5)
+  expect_error(nextElem(it), "StopIteration")
+})
 
 test_that("iseq_len generates a finite sequence of integers", {
   it <- iseq_len(4)

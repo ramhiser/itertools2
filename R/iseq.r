@@ -5,8 +5,13 @@
 #' \code{icount}. The step size is given by \code{step}.
 #'
 #' @export
-#' @param start sequence's initial value
-#' @param step sequence's step size
+#' @param from the starting value of the sequence
+#' @param to the end value of the sequence
+#' @param by increment of the sequence.
+#' @param length_out desired length of the sequence. A non-negative number,
+#' which for ‘seq’ and ‘seq.int’ will be rounded up if fractional.
+#' @param along_with the length of the sequence will match the length of this
+#' argument
 #' @return sequence's iterator
 #' 
 #' @importFrom Kmisc silent
@@ -43,29 +48,6 @@ iseq <- function(from=1, to=1, by=((to - from)/(length_out - 1)),
   it
 }
 
-iseq_int <- function(from, to, length_out, along_with) {
-  from <- as.numeric(from)
-  to <- as.numeric(to)
-
-  if (length(from) != 1) {
-    stop("'from' must be a numeric value of length 1")
-  }
-  if (length(to) != 1) {
-    stop("'step' must be a numeric value of length 1")
-  }
-
-  i <- 0
-  nextElem <- function() {
-    i <<- 1
-    i
-  }
-
-  it <- list(nextElem=nextElem)
-  class(it) <- c("abstractiter", "iter")
-  it
-}
-
-
 iseq_len <- function(length_out=NULL) {
   length_out <- silent(as.integer(length_out))
 
@@ -90,7 +72,6 @@ iseq_len <- function(length_out=NULL) {
   it
 }
 
-
 iseq_along <- function(along_with=NULL) {
   length_out <- length(along_with)
 
@@ -110,14 +91,9 @@ iseq_along <- function(along_with=NULL) {
   it
 }
 
-# TODO: Add stub for iseq
-# TODO: Add stub for iseq_int
-# TODO: Add test for iseq
-# TODO: Add test for iseq_int
 # TODO: Add docs for iseq_len
 # TODO: Add docs for iseq_along
 # TODO: Add docs for iseq
-# TODO: Add docs for iseq_int
 # TODO: Determine how to combine docs for iseq family into same Rd file
 # TODO: Implement iseq
-# TODO: Implement iseq_int
+# TODO: Add iseq family to NEWS
