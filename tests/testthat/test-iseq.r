@@ -43,6 +43,17 @@ test_that("iseq with along_with specified", {
   expect_error(nextElem(it), "StopIteration")
 })
 
+test_that("iseq for decreasing sequence with from and to specified", {
+  it <- iseq(from=2, to=-3.5)
+  expect_equal(nextElem(it), 2)
+  expect_equal(nextElem(it), 1)
+  expect_equal(nextElem(it), 0)
+  expect_equal(nextElem(it), -1)
+  expect_equal(nextElem(it), -2)
+  expect_equal(nextElem(it), -3)
+  expect_error(nextElem(it), "StopIteration")
+})
+
 test_that("iseq_len generates a finite sequence of integers", {
   it <- iseq_len(4)
   expect_equal(nextElem(it), 1)
