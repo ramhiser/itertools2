@@ -93,7 +93,7 @@ iseq <- function(from=1, to=1, by=(to - from)/(length_out - 1),
 iseq_len <- function(length_out=NULL) {
   length_out <- suppressWarnings(try(as.integer(length_out), silent=TRUE))
 
-  if (class(length_out) == "try-error" || length(length_out) != 1
+  if (inherits(length_out, "try-error") || length(length_out) != 1
       || length_out < 0 || is.na(length_out)) {
     stop("'length_out' must be coercible to non-negative integer")
   }

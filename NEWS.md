@@ -2,6 +2,12 @@
 
 ## Iterators
 
+* `ichain()`: Chains multiple arguments together into a single iterator.
+  Generates an iterator that returns elements from the first argument until it
+  is exhausted. Then generates an iterator from the next argument and returns
+  elements from it. This process continues until all arguments are exhausted
+  Chaining is useful for treating consecutive sequences as a single sequence.
+
 * `icount()`: Neverending numeric sequence with initial value and step size.
 
 * `icycle()`: Iterator that cycles indefinitely through an iterable object

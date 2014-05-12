@@ -1,3 +1,4 @@
+export(ichain)
 export(icount)
 export(icycle)
 export(irepeat)
