@@ -1,0 +1,72 @@
+\name{iseq}
+\alias{iseq}
+\alias{iseq_along}
+\alias{iseq_len}
+\title{Iterators for sequence generation}
+\usage{
+iseq(from = 1, to = 1, by = (to - from)/(length_out - 1),
+  length_out = NULL, along_with = NULL)
+
+iseq_len(length_out = NULL)
+
+iseq_along(along_with = NULL)
+}
+\arguments{
+  \item{from}{the starting value of the sequence}
+
+  \item{to}{the end value of the sequence}
+
+  \item{by}{increment of the sequence.}
+
+  \item{length_out}{desired length of the sequence. A
+  non-negative number, which for \code{seq} will be rounded
+  up if fractional.}
+
+  \item{along_with}{the length of the sequence will match
+  the length of this argument}
+}
+\value{
+sequence's iterator
+}
+\description{
+Constructs iterators that generate regular sequences that
+follow the \code{\link[base]{seq}} family.
+}
+\details{
+The \code{iseq} function generates a sequence of values
+beginning with \code{from} and ending with \code{to}. The
+sequence of values between are determined by the \code{by},
+\code{length_out}, and \code{along_with} arguments. The
+\code{by} argument determines the step size of the
+sequence, whereas \code{length_out} and \code{along_with}
+determine the length of the sequence. If \code{by} is not
+given, then it is determined by either \code{length_out} or
+\code{along_with}. By default, neither are given, in which
+case \code{by} is set to 1 or -1, depending on whether
+\code{to > from}.
+
+\code{seq_along} and \code{seq_len} return an iterator,
+which generates a sequence of integers, beginning with 1
+and proceeding to an ending value
+}
+\examples{
+it <- iseq(from=2, to=5)
+expect_equal(nextElem(it), 2)
+expect_equal(nextElem(it), 3)
+expect_equal(nextElem(it), 4)
+expect_equal(nextElem(it), 5)
+
+it2 <- iseq_len(4)
+expect_equal(nextElem(it2), 1)
+expect_equal(nextElem(it2), 2)
+expect_equal(nextElem(it2), 3)
+expect_equal(nextElem(it2), 4)
+
+it3 <- iseq_along(iris)
+expect_equal(nextElem(it3), 1)
+expect_equal(nextElem(it3), 2)
+expect_equal(nextElem(it3), 3)
+expect_equal(nextElem(it3), 4)
+expect_equal(nextElem(it3), 5)
+}
+

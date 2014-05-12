@@ -1,5 +1,7 @@
+export(ichain)
 export(icount)
 export(icycle)
 export(irepeat)
+export(iseq)
 importFrom(iterators,iter)
 importFrom(iterators,nextElem)
