@@ -5,8 +5,6 @@
 #' elements from it. This process continues until all arguments are exhausted
 #' Chaining is useful for treating consecutive sequences as a single sequence.
 #'
-#' Runs indefinitely unless the \code{times} argument is specified.
-#'
 #' @importFrom iterators iter nextElem
 #' @export
 #' @param ... multiple arguments to iterate through in sequence
@@ -41,8 +39,7 @@ ichain <- function(...) {
   arg_i <- 1
   nextElem <- function() {
     next_elem <- try(iterators::nextElem(iter_list[[arg_i]]), silent=TRUE)
-    if (inherits(next_elem, "try-error") &&
-        next_elem == "Error : StopIteration\n") {
+    if (stop_iteration(next_elem)) {
       arg_i <<- arg_i + 1
       if (arg_i > num_args) {
         stop("StopIteration", call.=FALSE)

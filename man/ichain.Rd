@@ -19,10 +19,6 @@ process continues until all arguments are exhausted
 Chaining is useful for treating consecutive sequences as a
 single sequence.
 }
-\details{
-Runs indefinitely unless the \code{times} argument is
-specified.
-}
 \examples{
 it <- ichain(1:3, 4:5, 6)
 nextElem(it) # 1
