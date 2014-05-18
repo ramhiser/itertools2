@@ -55,10 +55,10 @@ iseq <- function(from=1, to=1, by=(to - from)/(length_out - 1),
     stop("'from' must be a numeric value of length 1")
   }
   if (length(to) != 1) {
-    stop("'step' must be a numeric value of length 1")
+    stop("'to' must be a numeric value of length 1")
   }
   if (length(by) > 1 || (length(by) == 1 && by == 0)) {
-    stop("'step' must be a nonzero numeric value of length 1")
+    stop("'by' must be a nonzero numeric value of length 1")
   }
 
   # If 'by' is not given, then it is determined by either 'length_out' or
