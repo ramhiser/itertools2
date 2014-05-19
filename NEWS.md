@@ -12,6 +12,14 @@
 
 * `icycle()`: Iterator that cycles indefinitely through an iterable object
 
+* `ifilter()`: Iterator that filters elements not satisfying a predicate
+  function. Returns only those elements for which the predicate function is
+  `TRUE`.
+
+* `ifilterfalse()`: Iterator that filters elements not satisfying a predicate
+  function. Returns only those elements for which the predicate function is
+  `FALSE`.
+
 * `irepeat()`: Iterator that returns an object indefinitely unless a specified
   number of times is given.
 
