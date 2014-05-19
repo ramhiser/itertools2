@@ -1,6 +1,7 @@
 export(ichain)
 export(icount)
 export(icycle)
+export(ifilter)
 export(irepeat)
 export(iseq)
 export(izip)
