@@ -12,6 +12,11 @@
 
 * `icycle()`: Iterator that cycles indefinitely through an iterable object
 
+* `ienumerate()`: Iterator that returns the elements of an object along with
+  their indices. The `ienum()` function is an alias to save a few
+  keystrokes. This function is intended to follow the convention used in
+  Python's `enumerate` function.
+
 * `ifilter()`: Iterator that filters elements not satisfying a predicate
   function. Returns only those elements for which the predicate function is
   `TRUE`.
