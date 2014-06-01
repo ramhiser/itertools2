@@ -12,9 +12,10 @@
 
 * `icycle()`: Iterator that cycles indefinitely through an iterable object
 
+* `ienum()`: Alias to `ienumerate()` to save a few keystrokes.
+
 * `ienumerate()`: Iterator that returns the elements of an object along with
-  their indices. The `ienum()` function is an alias to save a few
-  keystrokes. This function is intended to follow the convention used in
+  their indices. This function is intended to follow the convention used in
   Python's `enumerate` function.
 
 * `ifilter()`: Iterator that filters elements not satisfying a predicate
@@ -35,3 +36,5 @@
 
 * `iseq_len()`: Iterators for sequence generation of a fixed length. Follows the
   base `seq_len()` function.
+
+* `islice()`: Iterator that returns selected elements from an iterable.
