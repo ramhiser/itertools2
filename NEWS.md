@@ -8,6 +8,10 @@
   elements from it. This process continues until all arguments are exhausted
   Chaining is useful for treating consecutive sequences as a single sequence.
 
+* `icompress()`: Iterator that filters elements where corresponding selector is
+  false. Returns only those elements for which the corresponding 'selector' is
+  `TRUE`.
+
 * `icount()`: Neverending numeric sequence with initial value and step size.
 
 * `icycle()`: Iterator that cycles indefinitely through an iterable object
