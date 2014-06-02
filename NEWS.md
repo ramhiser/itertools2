@@ -16,6 +16,9 @@
 
 * `icycle()`: Iterator that cycles indefinitely through an iterable object
 
+* `idropwhile()`: Iterator that drops elements until the predicate function
+  returns FALSE.
+
 * `ienum()`: Alias to `ienumerate()` to save a few keystrokes.
 
 * `ienumerate()`: Iterator that returns the elements of an object along with
@@ -44,4 +47,4 @@
 * `islice()`: Iterator that returns selected elements from an iterable.
 
 * `itakewhile()`: Iterator that returns elements while a predicate function
-  returns TRUE
+  returns TRUE.
