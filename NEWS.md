@@ -42,3 +42,6 @@
   base `seq_len()` function.
 
 * `islice()`: Iterator that returns selected elements from an iterable.
+
+* `itakewhile()`: Iterator that returns elements while a predicate function
+  returns TRUE

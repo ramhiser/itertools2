@@ -6,7 +6,7 @@
 #' @importFrom iterators iter nextElem
 #' @export
 #' @param predicate a function that determines whether an element is \code{TRUE}
-#' or \code{FALSE}.  The function is assumed to take only one argument.
+#' or \code{FALSE}. The function is assumed to take only one argument.
 #' @param iterable an iterable object
 #' @return iterator object
 #' 

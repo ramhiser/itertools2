@@ -10,7 +10,7 @@ ifilterfalse(predicate, iterable)
 }
 \arguments{
 \item{predicate}{a function that determines whether an element is \code{TRUE}
-or \code{FALSE}.  The function is assumed to take only one argument.}
+or \code{FALSE}. The function is assumed to take only one argument.}
 
 \item{iterable}{an iterable object}
 
