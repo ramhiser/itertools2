@@ -89,6 +89,7 @@ iseq <- function(from=1, to=1, by=(to - from)/(length_out - 1),
   it
 }
 
+#' @export
 #' @rdname iseq
 iseq_len <- function(length_out=NULL) {
   length_out <- suppressWarnings(try(as.integer(length_out), silent=TRUE))
@@ -114,6 +115,7 @@ iseq_len <- function(length_out=NULL) {
   it
 }
 
+#' @export
 #' @rdname iseq
 iseq_along <- function(along_with=NULL) {
   length_out <- length(along_with)
