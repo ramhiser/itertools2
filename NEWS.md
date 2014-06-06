@@ -56,3 +56,6 @@
 
 * `itakewhile()`: Iterator that returns elements while a predicate function
   returns TRUE.
+
+* `itee(): Returns a list of n independent iterators from a single iterable
+  object.
