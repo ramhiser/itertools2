@@ -9,7 +9,8 @@
 #'
 #' @importFrom iterators nextElem
 #' @export
-#' @param object object to return indefinitely.
+#' @param f a function
+#' @param ... multiple arguments to iterate through in sequence
 #' @return iterator that returns the values of \code{object} along with the
 #' index of the object. 
 #' 
@@ -25,15 +26,15 @@
 #' # Similar to the above, but because the second vector is exhausted after two
 #' # calls to `nextElem`, the iterator is exhausted.
 #' it2 <- imap(pow, c(2, 3, 10), c(5, 2))
-#' nextElem(it)
-#' nextElem(it)
-#' nextElem(it) # BOOM! Error.
+#' nextElem(it2)
+#' nextElem(it2)
+#' nextElem(it2) # BOOM! Error.
 #'
 #' # Another similar example but with lists instead of vectors
 #' it3 <- imap(pow, list(2, 3, 10), list(5, 2, 3))
-#' nextElem(it) # 32
-#' nextElem(it) # 9
-#' nextElem(it) # 1000
+#' nextElem(it3) # 32
+#' nextElem(it3) # 9
+#' nextElem(it3) # 1000
 imap <- function(f, ...) {
   f <- match.fun(f)
   iter_obj <- izip(...)
