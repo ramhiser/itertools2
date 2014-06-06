@@ -33,6 +33,9 @@
   function. Returns only those elements for which the predicate function is
   `FALSE`.
 
+# `imap()`: Iterator that applies a given function to several iterables
+  concurrently.
+
 * `irepeat()`: Iterator that returns an object indefinitely unless a specified
   number of times is given.
 
