@@ -7,6 +7,12 @@
 #' is exhausted. Note that \code{imap} does not recycle arguments as
 #' \code{\link[base]{Map}} does.
 #'
+#' The primary difference between \code{istarmap} and
+#' \code{\link[itertools2]{imap}} is that the former expects an iterable object
+#' whose elements are already grouped together, while the latter case groups the
+#' arguments together before applying the given function. The choice is a matter
+#' of style and convenience.
+#'
 #' @importFrom iterators nextElem
 #' @export
 #' @param f a function

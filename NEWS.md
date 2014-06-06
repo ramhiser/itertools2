@@ -49,5 +49,10 @@
 
 * `islice()`: Iterator that returns selected elements from an iterable.
 
+* `istar()`: Alias to `istarmap()` to save a few keystrokes.
+
+* `istarmap()`: Iterator that applies a given function to the elements of an
+  iterable.
+
 * `itakewhile()`: Iterator that returns elements while a predicate function
   returns TRUE.
