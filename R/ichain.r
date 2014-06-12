@@ -38,6 +38,8 @@ ichain <- function(...) {
   #       See the iterators vignette for details.
   arg_i <- 1
   nextElem <- function() {
+    if (arg_i > num_args) {
+      stop("StopIteration", call.=FALSE) }
     next_elem <- try(iterators::nextElem(iter_list[[arg_i]]), silent=TRUE)
     if (stop_iteration(next_elem)) {
       arg_i <<- arg_i + 1

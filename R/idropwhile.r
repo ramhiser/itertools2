@@ -16,7 +16,7 @@
 #' @return iterator object
 #' 
 #' @examples
-#' # Filters out numbers exceeding 5
+#' # Filters out numbers exceeding 3
 #' not_too_large <- function(x) {
 #'   x <= 3
 #' }

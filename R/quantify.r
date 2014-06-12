@@ -17,8 +17,8 @@ quantify <- function(iterator){
   i <- 0
   repeat{
     elem <- try(nextElem(iterator), T)
-    if(class(elem) == "try-error") break
-    if(class(elem) != "logical") stop("Iterator must contain logical elements")
+    if(stop_iteration(elem)) break
+    if((class(elem) != "logical") & (!(elem %in% 0:1))) stop("Iterator must contain logical elements")
     if(elem) i <- i + 1
   }
   return(i)

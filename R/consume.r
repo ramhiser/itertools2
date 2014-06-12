@@ -16,17 +16,20 @@
 #' 
 
 consume <- function(iterator, n = 0){
-  if(n < 0 | !is.numeric(n) | length(n) != 1) stop("n must be a positive integer of length 1")
+  if(n < 0 | !is.numeric(n) | length(n) != 1){
+    stop("n must be a non-negative integer of length 1")
+  }
+  
   if (n == 0){
     repeat{
-      if(class(try(nextElem(iterator), T)) == "try-error") break
+      if(stop_iteration(iterator)) break
     }
     
   } else {
     n <- floor(n)
     for (i in 1:n){
       elem <- try(nextElem(iterator), T)
-      if (class(elem) == "try-error"){
+      if (stop_iteration(elem)){
         warning("Iterator consumed")
         break
       }
@@ -56,8 +59,11 @@ consume <- function(iterator, n = 0){
 #' 
 #' 
 nth <- function(iterator, n, default = NA){
+  if(n <= 0 | !is.numeric(n) | length(n) != 1){
+    stop("n must be a positive integer of length 1")
+  }
   consume(iterator, n - 1)
   elem <- try(nextElem(iterator), T)
-  res <- ifelse(class(elem) == "try-error", default, elem)
+  res <- ifelse(stop_iteration(elem), default, elem)
   return(res)
 }
