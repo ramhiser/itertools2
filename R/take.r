@@ -1,6 +1,7 @@
 #' Returns the first n items 
 #'
-#' Returns first n items of an iterable as a list
+#' Returns first n items of an iterable as a list. If n is greater than the
+#' number of elements, returns NA.
 #'
 #' @importFrom iterators iter nextElem
 #' @importFrom testthat try
