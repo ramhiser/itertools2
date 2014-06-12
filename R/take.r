@@ -17,7 +17,7 @@
 take <- function(iterator, n){
   if(n < 0 | !is.numeric(n) | length(n) != 1) stop("n must be a positive integer of length 1")
   n <- floor(n)
-  out <- rep(NA, n)
+  out <- as.list(rep(NA, n))
   for (i in 1:n){
     elem <- try(nextElem(iterator), T)
     out[i] <- ifelse(class(elem) == "try-error", NA, elem)
