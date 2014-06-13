@@ -21,17 +21,18 @@ idotproduct <- function(iterator1, iterator2){
     elem1 <- try(nextElem(iterator1), T)
     elem2 <- try(nextElem(iterator2), T)
     
-    if (class(elem1) == "try-error"){
-      if (class(elem2) == "try-error"){
+    if (stop_iteration(elem1)){
+      if (stop_iteration(elem2)){
         break
       } else {
         stop("Iterators must be of equal length")
       }
-    } else if (class(elem2) == "try-error") {
+    } else if (stop_iteration(elem2)) {
       stop("Iterators must be of equal length")
     }
     
-    if(!is.numeric(elem1) | !is.numeric(elem2)) stop("Iterator must be numeric")
+    if(!(is.numeric(elem1) | is.logical(elem1)) | 
+         !(is.numeric(elem2) | is.logical(elem2))) stop("Iterator must be numeric")
     sum <- sum + elem1 * elem2
   }
   return(sum)

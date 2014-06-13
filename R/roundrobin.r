@@ -19,29 +19,29 @@
 roundrobin <- function(...){
   iters <- list(...)
   len <- length(iters)
-  no_good <- c()
-  i <- 1
   
-  nextElem <- function() {
+  no_good <- c()
+  i <- icycle(1:len)
+  
+  nextElement <- function() {
     
-    next_elem <- try(iterators::nextElem(iters[[i]]), T)
-    while (class(next_elem) == "try-error"){
-      no_good <<- unique(c(no_good, i))
-      if (length(no_good) == len) stop("End of iteration")
-      i <<- ifelse(i == len, 1, i + 1)
-      next_elem <- try(iterators::nextElem(iters[[i]]), T)
+    witch <- nextElem(i)
+    next_elem <- try(nextElem(iters[[witch]]), T)
+    
+    while (stop_iteration(next_elem)){
+      no_good <<- unique(c(no_good, witch))
+      if (length(no_good) == len) stop("StopIteration", call.=FALSE)
+      witch <- nextElem(i)
+      next_elem <- try(nextElem(iters[[witch]]), T)
     }
     
-    i <<- ifelse(i == len, 1, i + 1)
-    
-    while(i %in% no_good){
-      i <<- ifelse(i == len, 1, i + 1)
-    }
-    
-    return(next_elem)    
+    while(witch %in% no_good){
+      witch <- nextElem(i)
+    }   
+    return(next_elem)
   }
   
-  it <- list(nextElem=nextElem)
+  it <- list(nextElem=nextElement)
   class(it) <- c("abstractiter", "iter")
   it
 }
