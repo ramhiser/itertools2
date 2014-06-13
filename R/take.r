@@ -15,6 +15,7 @@
 #' 
 
 take <- function(iterator, n){
+  if(!(any(class(iterator) == "iter"))) stop("'iterator' must be of class 'iter'")
   if(n < 0 | !is.numeric(n) | length(n) != 1) stop("n must be a positive integer of length 1")
   n <- floor(n)
   out <- as.list(rep(NA, n))

@@ -16,6 +16,9 @@
 #' 
 
 idotproduct <- function(iterator1, iterator2){
+  if(!(any(class(iterator1) == "iter"))) stop("'iterators' must be of class 'iter'")
+  if(!(any(class(iterator2) == "iter"))) stop("'iterators' must be of class 'iter'")
+  
   sum <- 0
   repeat{
     elem1 <- try(nextElem(iterator1), T)

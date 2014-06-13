@@ -19,7 +19,7 @@
 #'
 ilength <- function(iterator){
   # check of class "iter"
-  if(!("iter" %in% class(iterator))) stop(paste("ilength only defined for objects of class \"iter\""))
+  if(!(any(class(iterator) == "iter"))) stop("'iterator' must be of class 'iter'")
   # Alt:
   # if(!("iter" %in% class(iterator))) return(length(iterator))
   

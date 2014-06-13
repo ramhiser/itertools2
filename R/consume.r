@@ -16,6 +16,8 @@
 #' 
 
 consume <- function(iterator, n = 0){
+  if(!(any(class(iterator) == "iter"))) stop("'iterator' must be of class 'iter'")
+  
   if(n < 0 | !is.numeric(n) | length(n) != 1){
     stop("n must be a non-negative integer of length 1")
   }
@@ -59,7 +61,8 @@ consume <- function(iterator, n = 0){
 #' 
 #' 
 nth <- function(iterator, n, default = NA){
-
+  if(!(any(class(iterator) == "iter"))) stop("'iterator' must be of class 'iter'")
+  
   if(n < 0 | !is.numeric(n) | length(n) != 1){
     stop("n must be a positive integer of length 1")
   }

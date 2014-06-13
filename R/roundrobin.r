@@ -19,6 +19,9 @@
 roundrobin <- function(...){
   iters <- list(...)
   len <- length(iters)
+  for (j in 1:len){
+    if(!(any(class(iters[[j]]) == "iter"))) stop("all iterators must be of class 'iter'")
+  }
   
   no_good <- c()
   i <- icycle(1:len)

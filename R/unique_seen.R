@@ -19,8 +19,10 @@
 #'
 
 unique_everseen <- function(iterator, ignore_case = F){
+  if(!(any(class(iterator) == "iter"))) stop("'iterator' must be of class 'iter'")
   unis <- c()
   next_elem <- try(nextElem(iterator), T)
+  
   while(!stop_iteration(next_elem)){
     if (ignore_case){
       if (!(tolower(next_elem) %in% unis)){
@@ -56,11 +58,14 @@ unique_everseen <- function(iterator, ignore_case = F){
 #'
 #'
 unique_justseen <- function(iterator, ignore_case = F){
+  if(!(any(class(iterator) == "iter"))) stop("'iterator' must be of class 'iter'")
   
   first_elem <- try(nextElem(iterator), T)
   if (stop_iteration(first_elem)) stop("StopIteration")
+  
   unis <- ifelse(ignore_case, tolower(first_elem), first_elem)
   next_elem <- try(nextElem(iterator), T)
+  
   while(!stop_iteration(next_elem)){
     if (ignore_case){
       if (tolower(first_elem) != tolower(next_elem)){

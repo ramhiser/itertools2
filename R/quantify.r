@@ -14,6 +14,7 @@
 #' 
  
 quantify <- function(iterator){
+  if(!(any(class(iterator) == "iter"))) stop("'iterator' must be of class 'iter'")
   i <- 0
   repeat{
     elem <- try(nextElem(iterator), T)
