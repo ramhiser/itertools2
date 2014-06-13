@@ -4,6 +4,7 @@
 #' argument will be increased by 1 each time the iterator is called and fed 
 #' into the function. It is assumed that the input function has 1 argument.
 #'
+#' @export
 #' @param fn The function to apply
 #' @param start The starting parameter to apply the function to, default is 1 
 #' @param end The last parameter to be transformed, default is NULL
