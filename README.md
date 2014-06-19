@@ -19,3 +19,13 @@ If you prefer to download the latest version, instead type:
 library(devtools)
 install_github('ramhiser/itertools2')
 ```
+
+## License
+
+The `itertools2` R package is licensed under the [MIT
+License](http://opensource.org/licenses/MIT). However, this package depends on the [iterators R
+package](http://cran.r-project.org/web/packages/iterators/index.html),
+which is licensed under the [Apache License, Version
+2.0](http://www.apache.org/licenses/LICENSE-2.0). Both packages are freely
+available for commercial and non-commerical usage. Please consult the licensing
+terms for more details.
