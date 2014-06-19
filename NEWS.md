@@ -56,3 +56,12 @@
 
 * `itakewhile()`: Iterator that returns elements while a predicate function
   returns TRUE.
+
+* `itee(): Returns a list of n independent iterators from a single iterable
+  object.
+
+* `izip()`: Iterator that iterates through several iterables concurrently.
+
+* `izip_longest()`: Iterator that iterates through several iterables
+  concurrently. Missing values are replaced with the value given in `fill` if
+  the iterables are of uneven length.
