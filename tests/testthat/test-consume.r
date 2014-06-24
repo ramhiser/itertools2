@@ -23,7 +23,7 @@ test_that("nth returns the given default value when the iterator is consumed", {
   expect_equal(nth(it2, 27), NA)
 })
 
-test_that("consume rejects non-postive or non-numeric n", {
+test_that("consume rejects non-positive or non-numeric n", {
   it <- iter(letters)
   expect_error(consume(it, -1), "n must be a non-negative integer of length 1")
   expect_error(consume(it, "a"), "n must be a non-negative integer of length 1")
