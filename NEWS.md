@@ -36,6 +36,13 @@
 # `imap()`: Iterator that applies a given function to several iterables
   concurrently.
 
+
+* `irep()`: Iterator that replicates elements of an iterable object. Follows the
+  base `rep()` function.
+
+* `irep_len()`: Iterator that replicates elements of an iterable object with a
+  desired length. Follows the base `rep_len()` function.
+
 * `irepeat()`: Iterator that returns an object indefinitely unless a specified
   number of times is given.
 
