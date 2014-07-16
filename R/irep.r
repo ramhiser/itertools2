@@ -49,10 +49,9 @@ irep <- function(object, times=1, length.out=NULL, each=NULL) {
     }
   }
 
-  if (is.null(each)) {
-    it <- icycle(object, times=times)
-  } else {
-    it <- irep_each(object, each=each)
+  it <- icycle(object, times=times)
+  if (!is.null(each)) {
+    it <- irep_each(it, each=each)
   }
 
   islice(it, end=length.out)
@@ -63,7 +62,6 @@ irep <- function(object, times=1, length.out=NULL, each=NULL) {
 irep_len <- function(object, length.out=NULL) {
   irep(object, times=1, length.out=length.out)
 }
-
 
 irep_each <- function(object, each=1) {
   each <- as.integer(each)
