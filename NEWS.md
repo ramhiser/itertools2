@@ -36,6 +36,8 @@
 # `imap()`: Iterator that applies a given function to several iterables
   concurrently.
 
+* `iproduct()`: Iterator that returns the Cartesian product of the
+  arguments. Similar to base::expand.grid().
 
 * `irep()`: Iterator that replicates elements of an iterable object. Follows the
   base `rep()` function.
