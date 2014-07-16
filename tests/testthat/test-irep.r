@@ -74,3 +74,10 @@ test_that("irep_len works on numeric vectors", {
   expect_equal(nextElem(it), 3)
   expect_error(nextElem(it), "StopIteration")
 })
+
+# Related to Issue #33
+test_that("irep matches base::rep() when both times and each args are given", {
+  it <- irep(1:4, times=2, each=3)
+  expected_vector <- rep(1:4, times=2, each=3)
+  expect_equal(unlist(as.list(it)), expected_vector)
+})
