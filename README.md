@@ -13,11 +13,11 @@ You can install the stable version on [CRAN](http://cran.r-project.org/package=i
 install.packages('itertools2', dependencies=TRUE)
 ```
 
-If you prefer to download the latest version, instead type:
+If you prefer to download the latest version, instead run the following after
+installing [devtools](https://github.com/hadley/devtools):
 
 ```r
-library(devtools)
-install_github('ramhiser/itertools2')
+devtools::install_github('ramhiser/itertools2')
 ```
 
 ## License
