@@ -12,21 +12,27 @@
 #' @return iterator that returns \code{object}
 #' 
 #' @examples
-#' it <- irep(42)
-#' nextElem(it)
-#' nextElem(it)
-#' nextElem(it)
+#' it <- irep(1:3, 2)
+#' nextElem(it) # 1
+#' nextElem(it) # 2
+#' nextElem(it) # 3
+#' nextElem(it) # 1
+#' nextElem(it) # 2
+#' nextElem(it) # 3
 #' 
-#' it2 <- irep(42, times=4)
-#' nextElem(it2)
-#' nextElem(it2)
-#' nextElem(it2)
+#' it2 <- irep(1:3, each=2)
+#' nextElem(it2) # 1
+#' nextElem(it2) # 1
+#' nextElem(it2) # 2
+#' nextElem(it2) # 2
+#' nextElem(it2) # 3
+#' nextElem(it2) # 3
 #'
-#' # The object can be a data.frame, matrix, etc
-#' it3 <- irep(iris, times=4)
-#' nextElem(it3)
-#' nextElem(it3)
-#' nextElem(it3)
+#' it3 <- irep(1:3, each=2, length.out=4)
+#' nextElem(it3) # 1
+#' nextElem(it3) # 1
+#' nextElem(it3) # 2
+#' nextElem(it3) # 2
 irep <- function(object, times=1, length.out=NULL, each=NULL) {
   if (!is.null(length.out)) {
     length.out <- as.numeric(length.out)
@@ -41,18 +47,38 @@ irep <- function(object, times=1, length.out=NULL, each=NULL) {
     }
   }
 
-  i <- 0
-  nextElem <- function() {
-    i <<- i + 1
+  if (is.null(each)) {
+    it <- icycle(object, times=times)
+  } else {
+    it <- irep_each(object, each=each)
+  }
 
-    if (!is.null(times) && i > times) {
-      stop("StopIteration", call.=FALSE)
+  islice(it, end=length.out)
+}
+
+#' @export
+#' @rdname irep
+irep_len <- function(object, length.out=NULL) {
+  irep(object, times=1, length.out=length.out)
+}
+
+
+irep_each <- function(object, each=1) {
+  each <- as.integer(each)
+  iter_obj <- iterators::iter(object)
+  
+  iter_repeat <- irepeat(iterators::nextElem(iter_obj), times=each)
+
+  nextElem <- function() {
+    next_elem <- try(iterators::nextElem(iter_repeat), silent=TRUE)
+    if (stop_iteration(next_elem)) {
+      iter_repeat <<- irepeat(iterators::nextElem(iter_obj), times=each)
+      next_elem <- iterators::nextElem(iter_repeat)
     }
-    object
+    next_elem
   }
 
   it <- list(nextElem=nextElem)
   class(it) <- c("abstractiter", "iter")
   it
 }
-

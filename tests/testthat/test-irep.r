@@ -70,7 +70,7 @@ test_that("irep replicates a list and matches tenth example from base::rep", {
 
 test_that("irep replicates a factor and matches last example from base::rep", {
   # 8 integers plus two recycled 1's.
-  x <- factor(LETTERS[1:4]); names(x) <- letters[1:4]
+  x <- factor(LETTERS[1:4])
   it <- irep(x, 2)
   expect_equal(nextElem(it), x[1])
   expect_equal(nextElem(it), x[2])
