@@ -1,8 +1,10 @@
 #' Iterator that replicates elements of an iterable object
 #'
-#' Constructs an iterator that replicates the values of an \code{object}. This
-#' function is intended an iterable version of the standard
-#' \code{\link[base]{rep}} function.
+#' Constructs an iterator that replicates the values of an \code{object}.
+#'
+#' This function is intended an iterable version of the standard
+#' \code{\link[base]{rep}} function. However, as exception, the recycling
+#' behavior of \code{\link[base]{rep}} is intentionally not implemented.
 #'
 #' @export
 #' @param object object to return indefinitely.
