@@ -14,28 +14,23 @@
 #' 
 #' @examples
 #' it <- icycle(1:3)
-#' nextElem(it) # 1
-#' nextElem(it) # 2
-#' nextElem(it) # 3
-#' nextElem(it) # 1
-#' nextElem(it) # 2
-#' nextElem(it) # 3
-#' nextElem(it) # 1
+#' iterators::nextElem(it) # 1
+#' iterators::nextElem(it) # 2
+#' iterators::nextElem(it) # 3
+#' iterators::nextElem(it) # 1
+#' iterators::nextElem(it) # 2
+#' iterators::nextElem(it) # 3
+#' iterators::nextElem(it) # 1
 #' 
 #' it2 <- icycle(1:3, times=2)
-#' nextElem(it) # 1
-#' nextElem(it) # 2
-#' nextElem(it) # 3
-#' nextElem(it) # 1
-#' nextElem(it) # 2
-#' nextElem(it) # 3
-#' nextElem(it) # BOOM! Throws error.
+#' as.list(it2)
 #'
 #' # Can return the results from a function.
 #' it3 <- icycle(function() rnorm(1))
-#' nextElem(it)
-#' nextElem(it)
-#' nextElem(it)
+#' iterators::nextElem(it)
+#' iterators::nextElem(it)
+#' iterators::nextElem(it)
+#' iterators::nextElem(it)
 icycle <- function(object, times=NULL) {
   if (!is.null(times)) {
     times <- as.numeric(times)

@@ -24,22 +24,16 @@
 #' 
 #' @examples
 #' it <- islice(1:5, start=2)
-#' nextElem(it) # 2
-#' nextElem(it) # 3
-#' nextElem(it) # 4
-#' nextElem(it) # 5
+#' iterators::nextElem(it) # 2
+#' iterators::nextElem(it) # 3
+#' iterators::nextElem(it) # 4
+#' iterators::nextElem(it) # 5
 #' 
 #' it2 <- islice(1:10, start=2, end=5)
-#' nextElem(it) # 2
-#' nextElem(it) # 3
-#' nextElem(it) # 4
-#' nextElem(it) # 5
+#' unlist(as.list(it2)) == 2:5
 #'
 #' it3 <- islice(1:10, start=2, end=9, step=2)
-#' nextElem(it) # 2
-#' nextElem(it) # 4
-#' nextElem(it) # 6
-#' nextElem(it) # 8
+#' unlist(as.list(it3)) == c(2, 4, 6, 8)
 islice <- function(object, start=1, end=NULL, step=1) {
   start <- as.integer(start)
   step <- as.integer(step)

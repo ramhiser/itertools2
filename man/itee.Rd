@@ -18,26 +18,26 @@ Constructs a list of \code{n} iterators, each of which iterates through an
 iterable \code{object}.
 }
 \examples{
+# Creates a list of three iterators.
+# Each iterator iterates through 1:5 independently.
 iter_list <- itee(1:5, n=3)
-nextElem(iter_list[[1]]) # 1
-nextElem(iter_list[[1]]) # 2
-nextElem(iter_list[[1]]) # 3
 
-nextElem(iter_list[[2]]) # 1
-nextElem(iter_list[[2]]) # 2
+# Consumes the first iterator
+unlist(as.list(iter_list[[1]])) == 1:5
 
-nextElem(iter_list[[3]]) # 1
-nextElem(iter_list[[3]]) # 2
+# We can iterate through the remaining two iterators in any order.
+iterators::nextElem(iter_list[[2]]) # 1
+iterators::nextElem(iter_list[[2]]) # 2
 
-nextElem(iter_list[[1]]) # 4
-nextElem(iter_list[[1]]) # 5
+iterators::nextElem(iter_list[[3]]) # 1
+iterators::nextElem(iter_list[[3]]) # 2
 
-nextElem(iter_list[[2]]) # 3
-nextElem(iter_list[[2]]) # 4
-nextElem(iter_list[[2]]) # 5
+iterators::nextElem(iter_list[[2]]) # 3
+iterators::nextElem(iter_list[[2]]) # 4
+iterators::nextElem(iter_list[[2]]) # 5
 
-nextElem(iter_list[[3]]) # 3
-nextElem(iter_list[[3]]) # 4
-nextElem(iter_list[[3]]) # 5
+iterators::nextElem(iter_list[[3]]) # 3
+iterators::nextElem(iter_list[[3]]) # 4
+iterators::nextElem(iter_list[[3]]) # 5
 }
 

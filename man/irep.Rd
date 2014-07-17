@@ -30,25 +30,12 @@ behavior of \code{\link[base]{rep}} is intentionally not implemented.
 }
 \examples{
 it <- irep(1:3, 2)
-nextElem(it) # 1
-nextElem(it) # 2
-nextElem(it) # 3
-nextElem(it) # 1
-nextElem(it) # 2
-nextElem(it) # 3
+unlist(as.list(it)) == rep(1:3, 2)
 
 it2 <- irep(1:3, each=2)
-nextElem(it2) # 1
-nextElem(it2) # 1
-nextElem(it2) # 2
-nextElem(it2) # 2
-nextElem(it2) # 3
-nextElem(it2) # 3
+unlist(as.list(it2)) == rep(1:3, each=2)
 
 it3 <- irep(1:3, each=2, length.out=4)
-nextElem(it3) # 1
-nextElem(it3) # 1
-nextElem(it3) # 2
-nextElem(it3) # 2
+as.list(it3)
 }
 

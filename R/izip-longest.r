@@ -16,23 +16,23 @@
 #' @return iterator that iterates through each argument in sequence
 #' 
 #' @examples
-#' it <- izip(1:3, 4:6, 7:9)
-#' nextElem(it) # list(1, 4, 7)
-#' nextElem(it) # list(2, 5, 8)
-#' nextElem(it) # list(3, 6, 9)
+#' it <- izip_longest(x=1:3, y=4:6, z=7:9)
+#' iterators::nextElem(it) # list(x=1, y=4, z=7)
+#' iterators::nextElem(it) # list(x=2, y=5, z=8)
+#' iterators::nextElem(it) # list(x=3, y=6, z=9)
 #'
-#' it2 <- izip(1:3, 4:8)
-#' nextElem(it2) # list(1, 4)
-#' nextElem(it2) # list(2, 5)
-#' nextElem(it2) # list(3, 6)
-#' nextElem(it2) # list(NA, 7)
-#' nextElem(it2) # list(NA, 8)
+#' it2 <- izip_longest(1:3, 4:8)
+#' iterators::nextElem(it2) # list(1, 4)
+#' iterators::nextElem(it2) # list(2, 5)
+#' iterators::nextElem(it2) # list(3, 6)
+#' iterators::nextElem(it2) # list(NA, 7)
+#' iterators::nextElem(it2) # list(NA, 8)
 #' 
-#' it3 <- izip(1:3, 4:7, levels(iris$Species), fill="w00t")
-#' nextElem(it3) # list(1, 4, "setosa")
-#' nextElem(it3) # list(2, 5, "versicolor")
-#' nextElem(it3) # list(3, 6, "virginica")
-#' nextElem(it3) # list("w00t", 7, "w00t")
+#' it3 <- izip_longest(1:2, 4:7, levels(iris$Species), fill="w00t")
+#' iterators::nextElem(it3) # list(1, 4, "setosa")
+#' iterators::nextElem(it3) # list(2, 5, "versicolor")
+#' iterators::nextElem(it3) # list("w00t", 6, "virginica")
+#' iterators::nextElem(it3) # list("w00t", 7, "w00t")
 izip_longest <- function(..., fill=NA) {
   iter_list <- lapply(list(...), iter)
   if (length(iter_list) == 0) {

@@ -20,22 +20,24 @@ Although they share the same end goal, \code{iproduct} can yield drastic
 memory savings compared to \code{\link[base]{expand.grid}}.
 }
 \examples{
-it <- iproduct(1:3, 4:5)
-nextElem(it) # list(1, 4)
-nextElem(it) # list(1, 5)
-nextElem(it) # list(2, 4)
-nextElem(it) # list(2, 5)
-nextElem(it) # list(3, 4)
-nextElem(it) # list(3, 5)
+it <- iproduct(x=1:3, y=4:5)
+iterators::nextElem(it) # list(x=1, y=4)
+iterators::nextElem(it) # list(x=1, y=5)
+iterators::nextElem(it) # list(x=2, y=4)
+iterators::nextElem(it) # list(x=2, y=5)
+iterators::nextElem(it) # list(x=3, y=4)
+iterators::nextElem(it) # list(x=3, y=5)
 
-it2 <- iproduct(a=1:2, b=3:4, c=5:6)
-nextElem(it2) # list(a=1, b=3, c=5)
-nextElem(it2) # list(a=1, b=3, c=6)
-nextElem(it2) # list(a=1, b=4, c=5)
-nextElem(it2) # list(a=1, b=4, c=6)
-nextElem(it2) # list(a=2, b=3, c=5)
-nextElem(it2) # list(a=2, b=3, c=6)
-nextElem(it2) # list(a=2, b=4, c=5)
-nextElem(it2) # list(a=2, b=4, c=6)
+# iproduct is a replacement for base::expand.grid()
+# Large data.frames are not created unless the iterator is manually consumed
+a <- 1:2
+b <- 3:4
+c <- 5:6
+it2 <- iproduct(a=a, b=b, c=c)
+df_iproduct <- do.call(rbind, as.list(it2))
+df_iproduct <- data.frame(df_iproduct)
+
+# Compare df_iproduct with the results from base::expand.grid()
+base::expand.grid(a=a, b=b, c=c)
 }
 

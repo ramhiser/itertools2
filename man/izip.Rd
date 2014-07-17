@@ -17,19 +17,19 @@ list from each iteration. Used for lock-step iteration over several iterables
 at a time.
 }
 \examples{
-it <- izip(1:3, 4:6, 7:9)
-nextElem(it) # list(1, 4, 7)
-nextElem(it) # list(2, 5, 8)
-nextElem(it) # list(3, 6, 9)
+it <- izip(x=1:3, y=4:6, z=7:9)
+iterators::nextElem(it) # list(x=1, y=4, z=7)
+iterators::nextElem(it) # list(x=2, y=5, z=8)
+iterators::nextElem(it) # list(x=3, y=6, z=9)
 
-it2 <- izip(1:3, 4:6, levels(iris$Species))
-nextElem(it2) # list(1, 4, "setosa")
-nextElem(it2) # list(2, 5, "versicolor")
-nextElem(it2) # list(3, 6, "virginica")
+# Sums the zip'd elements. 1 + 4 + 7, and so on.
+it2 <- izip(1:3, 4:6, 7:9)
+sum_zip <- sapply(it2, function(x) sum(unlist(x)))
+sum_zip == c(12, 15, 18)
 
-it3 <- izip(1:3, 4:42, levels(iris$Species))
-nextElem(it3) # list(1, 4, "setosa")
-nextElem(it3) # list(2, 5, "versicolor")
-nextElem(it3) # list(3, 6, "virginica")
+it3 <- izip(a=1:3, b=4:42, class=levels(iris$Species))
+iterators::nextElem(it3) # list(a=1, b=4, class="setosa")
+iterators::nextElem(it3) # list(a=2, b=5, class="versicolor")
+iterators::nextElem(it3) # list(a=3, b=6, class="virginica")
 }
 

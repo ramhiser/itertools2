@@ -16,21 +16,11 @@
 #'   x <= 5
 #' }
 #' it <- itakewhile(not_too_large, 1:100)
-#' nextElem(it) # 1
-#' nextElem(it) # 2
-#' nextElem(it) # 3
-#' nextElem(it) # 4
-#' nextElem(it) # 5
-#' nextElem(it) # BOOM! Error
+#' unlist(as.list(it)) == 1:5
 #'
 #' # Same approach but uses an anonymous function
 #' it2 <- itakewhile(function(x) x <= 10, seq(2, 100, by=2))
-#' nextElem(it2) # 2
-#' nextElem(it2) # 4
-#' nextElem(it2) # 6
-#' nextElem(it2) # 8
-#' nextElem(it2) # 10
-#' nextElem(it2) # BOOM! Error
+#' unlist(as.list(it2)) == c(2, 4, 6, 8, 10)
 itakewhile <- function(predicate, object) {
   iter_obj <- iterators::iter(object)
 

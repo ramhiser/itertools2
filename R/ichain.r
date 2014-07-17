@@ -12,20 +12,10 @@
 #' 
 #' @examples
 #' it <- ichain(1:3, 4:5, 6)
-#' nextElem(it) # 1
-#' nextElem(it) # 2
-#' nextElem(it) # 3
-#' nextElem(it) # 4
-#' nextElem(it) # 5
-#' nextElem(it) # 6
+#' as.list(it)
 #' 
 #' it2 <- ichain(1:3, levels(iris$Species))
-#' nextElem(it2) # 1
-#' nextElem(it2) # 2
-#' nextElem(it2) # 3
-#' nextElem(it2) # setosa
-#' nextElem(it2) # versicolor
-#' nextElem(it2) # virginica
+#' as.list(it2)
 ichain <- function(...) {
   iter_list <- lapply(list(...), iter)
   num_args <- length(iter_list)
