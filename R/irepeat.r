@@ -15,20 +15,23 @@
 #' 
 #' @examples
 #' it <- irepeat(42)
-#' nextElem(it)
-#' nextElem(it)
-#' nextElem(it)
+#' iterators::nextElem(it)
+#' iterators::nextElem(it)
+#' iterators::nextElem(it)
+#' # Further calls to iterators::nextElem(it) will repeat 42
 #' 
 #' it2 <- irepeat(42, times=4)
-#' nextElem(it2)
-#' nextElem(it2)
-#' nextElem(it2)
+#' iterators::nextElem(it2)
+#' iterators::nextElem(it2)
+#' iterators::nextElem(it2)
+#' iterators::nextElem(it2)
 #'
 #' # The object can be a data.frame, matrix, etc
 #' it3 <- irepeat(iris, times=4)
-#' nextElem(it3)
-#' nextElem(it3)
-#' nextElem(it3)
+#' iterators::nextElem(it3)
+#' iterators::nextElem(it3)
+#' iterators::nextElem(it3)
+#' iterators::nextElem(it3)
 irepeat <- function(object, times=NULL) {
   if (!is.null(times)) {
     times <- as.numeric(times)

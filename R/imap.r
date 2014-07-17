@@ -25,22 +25,18 @@
 #'   x^y
 #' }
 #' it <- imap(pow, c(2, 3, 10), c(5, 2, 3))
-#' nextElem(it) # 32
-#' nextElem(it) # 9
-#' nextElem(it) # 1000
+#' as.list(it)
 #'
 #' # Similar to the above, but because the second vector is exhausted after two
 #' # calls to `nextElem`, the iterator is exhausted.
 #' it2 <- imap(pow, c(2, 3, 10), c(5, 2))
-#' nextElem(it2)
-#' nextElem(it2)
-#' nextElem(it2) # BOOM! Error.
+#' as.list(it2)
 #'
 #' # Another similar example but with lists instead of vectors
 #' it3 <- imap(pow, list(2, 3, 10), list(5, 2, 3))
-#' nextElem(it3) # 32
-#' nextElem(it3) # 9
-#' nextElem(it3) # 1000
+#' iterators::nextElem(it3) # 32
+#' iterators::nextElem(it3) # 9
+#' iterators::nextElem(it3) # 1000
 imap <- function(f, ...) {
   f <- match.fun(f)
   iter_obj <- izip(...)

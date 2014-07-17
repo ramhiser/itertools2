@@ -1,13 +1,15 @@
 Package: itertools2
 Title: itertools2: Functions creating iterators for efficient looping
 Version: 0.1
-Date: 2014-05-09
+Date: 2014-07-16
 Author: John A. Ramey <johnramey@gmail.com>
+    Kayla Schaefer <kschaefer.tx@gmail.com>
 Maintainer: John A. Ramey <johnramey@gmail.com>
 Description: A port of Python's excellent itertools module to R for efficient
     looping.
 Depends:
-    R (>= 2.14.0),
+    R (>= 3.0.2)
+Imports:
     iterators (>= 1.0.7)
 Suggests:
     testthat (>= 0.8.1)

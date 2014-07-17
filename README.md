@@ -9,15 +9,15 @@ package](https://r-forge.r-project.org/projects/itertools/).
 
 You can install the stable version on [CRAN](http://cran.r-project.org/package=itertools2):
 
-```
+```r
 install.packages('itertools2', dependencies=TRUE)
 ```
 
-If you prefer to download the latest version, instead type:
+If you prefer to download the latest version, instead run the following after
+installing [devtools](https://github.com/hadley/devtools):
 
-```
-library(devtools)
-install_github('ramhiser/itertools2')
+```r
+devtools::install_github('ramhiser/itertools2')
 ```
 
 ## License

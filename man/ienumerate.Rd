@@ -37,18 +37,14 @@ elements:
 \examples{
 set.seed(42)
 it <- ienumerate(rnorm(5))
-nextElem(it)
-nextElem(it)
-nextElem(it)
-nextElem(it)
-nextElem(it)
+as.list(it)
 
 # Iterates through the columns of the iris data.frame
 it2 <- ienum(iris)
-nextElem(it2)
-nextElem(it2)
-nextElem(it2)
-nextElem(it2)
-nextElem(it2)
+iterators::nextElem(it2)
+iterators::nextElem(it2)
+iterators::nextElem(it2)
+iterators::nextElem(it2)
+iterators::nextElem(it2)
 }
 

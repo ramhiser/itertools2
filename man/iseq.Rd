@@ -48,22 +48,12 @@ sequence of integers, beginning with 1 and proceeding to an ending value
 }
 \examples{
 it <- iseq(from=2, to=5)
-expect_equal(nextElem(it), 2)
-expect_equal(nextElem(it), 3)
-expect_equal(nextElem(it), 4)
-expect_equal(nextElem(it), 5)
+unlist(as.list(it)) == 2:5
 
 it2 <- iseq_len(4)
-expect_equal(nextElem(it2), 1)
-expect_equal(nextElem(it2), 2)
-expect_equal(nextElem(it2), 3)
-expect_equal(nextElem(it2), 4)
+unlist(as.list(it2)) == 1:4
 
 it3 <- iseq_along(iris)
-expect_equal(nextElem(it3), 1)
-expect_equal(nextElem(it3), 2)
-expect_equal(nextElem(it3), 3)
-expect_equal(nextElem(it3), 4)
-expect_equal(nextElem(it3), 5)
+unlist(as.list(it3)) == 1:length(iris)
 }
 

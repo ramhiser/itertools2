@@ -30,20 +30,10 @@ not_too_large <- function(x) {
   x <= 3
 }
 it <- idropwhile(not_too_large, 1:8)
-nextElem(it) # 4
-nextElem(it) # 5
-nextElem(it) # 6
-nextElem(it) # 7
-nextElem(it) # 8
-nextElem(it) # BOOM! Error
+as.list(it)
 
 # Same approach but uses an anonymous function
 it2 <- idropwhile(function(x) x <= 10, seq(2, 20, by=2))
-nextElem(it2) # 12
-nextElem(it2) # 14
-nextElem(it2) # 16
-nextElem(it2) # 18
-nextElem(it2) # 20
-nextElem(it2) # BOOM! Error
+as.list(it2)
 }
 

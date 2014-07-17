@@ -15,14 +15,14 @@
 #' 
 #' @examples
 #' it <- icount()
-#' nextElem(it)
-#' nextElem(it)
-#' nextElem(it)
+#' iterators::nextElem(it)
+#' iterators::nextElem(it)
+#' iterators::nextElem(it)
 #' 
 #' it2 <- icount(start=5.5, step=1.5)
-#' nextElem(it2)
-#' nextElem(it2)
-#' nextElem(it2)
+#' iterators::nextElem(it2)
+#' iterators::nextElem(it2)
+#' iterators::nextElem(it2)
 icount <- function(start=0, step=1) {
   start <- as.numeric(start)
   step <- as.numeric(step)

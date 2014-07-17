@@ -17,30 +17,18 @@
 #' @examples
 #' # Filters out odd numbers and retains only even numbers
 #' n <- 10
-#' selectors <- rep(c(F, T), n)
+#' selectors <- rep(c(FALSE, TRUE), n)
 #' it <- icompress(seq_len(n), selectors)
-#' nextElem(it) # 2
-#' nextElem(it) # 4
-#' nextElem(it) # 6
-#' nextElem(it) # 8
-#' nextElem(it) # 10
+#' as.list(it)
 #'
 #' # Similar idea here but anonymous function is used to filter out even
 #' # numbers
 #' n <- 10
-#' it2 <- icompress(seq_len(10), rep(c(T, F), n))
-#' nextElem(it) # 1
-#' nextElem(it) # 3
-#' nextElem(it) # 5
-#' nextElem(it) # 7
-#' nextElem(it) # 9
+#' it2 <- icompress(seq_len(10), rep(c(TRUE, FALSE), n))
+#' as.list(it2)
 #'
 #' it3 <- icompress(letters, letters %in% c('a', 'e', 'i', 'o', 'u'))
-#' nextElem(it) # a
-#' nextElem(it) # e
-#' nextElem(it) # i
-#' nextElem(it) # o
-#' nextElem(it) # u
+#' as.list(it3)
 icompress <- function(object, selectors) {
   iter_izip <- izip(obj=object, select=selectors)
 

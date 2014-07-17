@@ -14,28 +14,23 @@
 #' 
 #' @examples
 #' it <- icycle(1:3)
-#' nextElem(it) # 1
-#' nextElem(it) # 2
-#' nextElem(it) # 3
-#' nextElem(it) # 1
-#' nextElem(it) # 2
-#' nextElem(it) # 3
-#' nextElem(it) # 1
+#' iterators::nextElem(it) # 1
+#' iterators::nextElem(it) # 2
+#' iterators::nextElem(it) # 3
+#' iterators::nextElem(it) # 1
+#' iterators::nextElem(it) # 2
+#' iterators::nextElem(it) # 3
+#' iterators::nextElem(it) # 1
 #' 
 #' it2 <- icycle(1:3, times=2)
-#' nextElem(it) # 1
-#' nextElem(it) # 2
-#' nextElem(it) # 3
-#' nextElem(it) # 1
-#' nextElem(it) # 2
-#' nextElem(it) # 3
-#' nextElem(it) # BOOM! Throws error.
+#' as.list(it2)
 #'
 #' # Can return the results from a function.
 #' it3 <- icycle(function() rnorm(1))
-#' nextElem(it)
-#' nextElem(it)
-#' nextElem(it)
+#' iterators::nextElem(it)
+#' iterators::nextElem(it)
+#' iterators::nextElem(it)
+#' iterators::nextElem(it)
 icycle <- function(object, times=NULL) {
   if (!is.null(times)) {
     times <- as.numeric(times)
@@ -49,11 +44,7 @@ icycle <- function(object, times=NULL) {
   # been exhausted. Fortunately, there is a `length` added for fixed-length
   # objects. When there's not a length, we assume it to be 1.
   iter_obj <- iterators::iter(object, recycle=TRUE)
-
-  iter_length <- iter_obj$length
-  if (is.null(iter_length)) {
-    iter_length <- 1
-  }
+  iter_len <- iter_length(iter_obj)
 
   # Counter on number of times `object` has been exhausted
   num_exhausted <- 0
@@ -61,7 +52,7 @@ icycle <- function(object, times=NULL) {
 
   nextElem <- function() {
     i <<- i + 1
-    if (i > iter_length) {
+    if (i > iter_len) {
       num_exhausted <<- num_exhausted + 1
       i <<- 1
     }

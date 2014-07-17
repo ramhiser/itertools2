@@ -37,27 +37,22 @@ pow <- function(x, y) {
   x^y
 }
 it <- istarmap(pow, list(c(2, 3, 10), c(5, 2, 3)))
-nextElem(it) # 32
-nextElem(it) # 9
-nextElem(it) # 1000
+unlist(as.list(it)) == c(32, 9, 1000)
 
 # Similar to the above, but because the second vector is exhausted after two
 # calls to `nextElem`, the iterator is exhausted.
 it2 <- istarmap(pow, list(c(2, 3, 10), c(5, 2)))
-nextElem(it2)
-nextElem(it2)
-nextElem(it2) # BOOM! Error.
+unlist(as.list(it2)) == c(32, 9)
 
 # Another similar example but with lists instead of vectors
 it3 <- istarmap(pow, list(list(2, 3, 10), list(5, 2, 3)))
-nextElem(it3) # 32
-nextElem(it3) # 9
-nextElem(it3) # 1000
+as.list(it3)
 
 # Computes sum of each row in the iris data set
-it4 <- istarmap(sum, iris[, -5])
-nextElem(it4)
-nextElem(it4)
-nextElem(it4) # and so on...
+# Numerically equivalent to base::rowSums()
+tolerance <- sqrt(.Machine$double.eps)
+iris_x <- iris[, -5]
+it4 <- istarmap(sum, iris_x)
+unlist(as.list(it4)) - rowSums(iris_x) < tolerance
 }
 
