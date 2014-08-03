@@ -1,3 +1,13 @@
+# itertools 0.1.1
+
+## Iterators
+
+* `consume()`: Consumes the first n elements of an iterator.
+
+* `nth()`: Returns the nth item of an iterator, skipping the iterator ahead
+  during the process. If the iterator is entirely consumed, a default value is
+  returned.
+
 # itertools 0.1
 
 ## Iterators
