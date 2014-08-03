@@ -22,19 +22,19 @@ the \code{default} value is returned instead. That is, if either \code{n >
 length(iterator)} or \code{n} is 0, then the \code{iterator} is consumed.
 }
 \examples{
-it <- iter(1:10)
+it <- iterators::iter(1:10)
 # Returns 5
 nth(it, 5)
 
-it2 <- iter(letters)
+it2 <- iterators::iter(letters)
 # Returns 'e'
 nth(it2, 5)
 
-it3 <- iter(letters)
+it3 <- iterators::iter(letters)
 # Returns default value of NA
 nth(it3, 42)
 
-it4 <- iter(letters)
+it4 <- iterators::iter(letters)
 # Returns default value of "foo"
 nth(it4, 42, default="foo")
 }

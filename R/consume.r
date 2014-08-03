@@ -12,13 +12,13 @@
 #' @return Nothing, i.e., \code{invisible(NULL)}
 #'
 #' @examples
-#' it <- iter(1:10)
+#' it <- iterators::iter(1:10)
 #' # Skips the first 5 elements
 #' consume(it, n=5)
 #' # Returns 6
 #' iterators::nextElem(it)
 #'
-#' it2 <- iter(letters)
+#' it2 <- iterators::iter(letters)
 #' # Skips the first 4 elements
 #' consume(it, 4)
 #' # Returns 'e'
@@ -34,12 +34,11 @@ consume <- function(iterator, n=0) {
   }
 
   n <- as.integer(n)
-  consume_all_things <- ifelse(n == 0, TRUE, FALSE)
   i <- 0
   repeat {
     elem <- try(iterators::nextElem(iterator), silent=TRUE)
     i <- i + 1
-    if (stop_iteration(elem) || (!consume_all_things && i >= n)) {
+    if (stop_iteration(elem) || (n > 0 && i >= n)) {
       break
     }
   }
@@ -62,19 +61,19 @@ consume <- function(iterator, n=0) {
 #' @return The nth element of the iterable or the default value
 #'
 #' @examples
-#' it <- iter(1:10)
+#' it <- iterators::iter(1:10)
 #' # Returns 5
 #' nth(it, 5)
 #'
-#' it2 <- iter(letters)
+#' it2 <- iterators::iter(letters)
 #' # Returns 'e'
 #' nth(it2, 5)
 #'
-#' it3 <- iter(letters)
+#' it3 <- iterators::iter(letters)
 #' # Returns default value of NA
 #' nth(it3, 42)
 #'
-#' it4 <- iter(letters)
+#' it4 <- iterators::iter(letters)
 #' # Returns default value of "foo"
 #' nth(it4, 42, default="foo")
 #'

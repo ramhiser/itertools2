@@ -21,13 +21,13 @@ If \code{n} is 0, the iterator is consumed entirely. Similarly, if \code{n}
 is larger than the length of the iterator, the iterator is consumed entirely.
 }
 \examples{
-it <- iter(1:10)
+it <- iterators::iter(1:10)
 # Skips the first 5 elements
 consume(it, n=5)
 # Returns 6
 iterators::nextElem(it)
 
-it2 <- iter(letters)
+it2 <- iterators::iter(letters)
 # Skips the first 4 elements
 consume(it, 4)
 # Returns 'e'
