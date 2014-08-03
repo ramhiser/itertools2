@@ -24,3 +24,15 @@ stop_iteration <- function(object) {
 iter_length <- function(object, default=1) {
   ifelse(is.null(object$length), default, object$length)
 }
+
+#' Helper function that determines whether is an iterator object
+#'
+#' Returns \code{TRUE} if the \code{object} is an object of class \code{iter},
+#' and \code{FALSE} otherwise.
+#'
+#' @param object an R object
+#' @return logical value indicating whether \code{object} is of class
+#' \code{iter}
+is_iterator <- function(object) {
+  inherits(it, "iter")
+}
