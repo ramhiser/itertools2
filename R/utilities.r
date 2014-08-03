@@ -34,5 +34,5 @@ iter_length <- function(object, default=1) {
 #' @return logical value indicating whether \code{object} is of class
 #' \code{iter}
 is_iterator <- function(object) {
-  inherits(it, "iter")
+  inherits(object, "iter")
 }
