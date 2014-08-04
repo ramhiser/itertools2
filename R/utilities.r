@@ -36,3 +36,21 @@ iter_length <- function(object, default=1) {
 is_iterator <- function(object) {
   inherits(object, "iter")
 }
+
+#' Calls iterators::nextElem(). If error, returns default value.
+#'
+#' Returns the next element of \code{object}. In the case a StopIteration
+#' exception is thrown, the \code{default} value is returned instead.
+#'
+#' @param object an iterable object
+#' @param default default value returned if a StopIteration exception is thrown
+#' @param silent Should any errors be suppressed without explicitly notifying
+#' the user? Default. Yes
+#' @return the next element of \code{object}
+try_nextElem <- function(object, default=NA, silent=TRUE) {
+  next_elem <- try(iterators::nextElem(object), silent=silent)
+  if (stop_iteration(next_elem)) {
+    next_elem <- default
+  }
+  next_elem
+}
