@@ -2,6 +2,12 @@
 
 ## Iterators
 
+* `ichunk():` Iterator that returns elements in fixed-length chunks. If the
+  length of the iterator is not divisible by `chunk_size`, the remainder of the
+  last block is filled with the value specified in `fill`.
+
+## Utilities
+
 * `consume()`: Consumes the first n elements of an iterator.
 
 * `nth()`: Returns the nth item of an iterator, skipping the iterator ahead

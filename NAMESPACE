@@ -2,6 +2,7 @@
 
 export(consume)
 export(ichain)
+export(ichunk)
 export(icompress)
 export(icount)
 export(icycle)
