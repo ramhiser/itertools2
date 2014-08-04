@@ -25,7 +25,7 @@ first becomes false, there may have a lengthy start-up time before elements
 are returned.
 }
 \examples{
-# Filters out numbers exceeding 5
+# Filters out numbers exceeding 3
 not_too_large <- function(x) {
   x <= 3
 }
