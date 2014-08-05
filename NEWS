@@ -2,9 +2,12 @@
 
 ## Iterators
 
-* `ichunk():` Iterator that returns elements in fixed-length chunks. If the
+* `ichunk()`: Iterator that returns elements in fixed-length chunks. If the
   length of the iterator is not divisible by `chunk_size`, the remainder of the
   last block is filled with the value specified in `fill`.
+
+* `ipad()`: Iterator that returns an object followed indefinitely by a `fill`
+  value.
 
 ## Utilities
 
