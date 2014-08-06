@@ -9,6 +9,8 @@
 * `ipad()`: Iterator that returns an object followed indefinitely by a `fill`
   value.
 
+* `ipairwise()`: Iterator that returns elements of an object in pairs.
+
 ## Utilities
 
 * `consume()`: Consumes the first n elements of an iterator.
