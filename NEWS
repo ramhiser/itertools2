@@ -21,6 +21,8 @@
   during the process. If the iterator is entirely consumed, a default value is
   returned.
 
+* `quantify()`: Count the number of times an iterable object is TRUE
+
 # itertools 0.1
 
 ## Iterators
