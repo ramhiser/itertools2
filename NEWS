@@ -11,6 +11,9 @@
 
 * `ipairwise()`: Iterator that returns elements of an object in pairs.
 
+* `iroundrobin()`: Iterator that traverses each given iterable in a roundrobin
+  order.
+
 ## Utilities
 
 * `consume()`: Consumes the first n elements of an iterator.
