@@ -50,6 +50,6 @@ test_that("iroundrobin works functions properly with multiple iterators of unequ
 
 test_that("iroundrobin works functions properly with multiple vectors of unequal length", {
   rr <- iroundrobin(1:3, 5, 25:26)
-  expect_equal(take(rr, 6), list(5, 25, 1, 26, 2, 3))
+  expect_equal(take(rr, 6), list(1, 5, 25, 2, 26, 3))
   expect_error(iterators::nextElem(rr), "StopIteration")
 })

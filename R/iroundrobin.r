@@ -28,16 +28,19 @@ iroundrobin <- function(...) {
   it_cycle <- icycle(seq_len(num_iters))
 
   nextElement <- function() {
-    if (!any(has_elems)) {
-      stop("StopIteration", call.=FALSE)
+    repeat {
+      if (!any(has_elems)) {
+        stop("StopIteration", call.=FALSE)
+      }
+      which_iter <- iterators::nextElem(it_cycle)
+      next_elem <- try(iterators::nextElem(iter_list[[which_iter]]), silent=TRUE)
+
+      if (stop_iteration(next_elem)) {
+        has_elems[which_iter] <<- FALSE
+      } else {
+        return(next_elem)
+      }
     }
-    which_iter <- iterators::nextElem(it_cycle)
-    next_elem <- try(iterators::nextElem(iter_list[[which_iter]]), silent=TRUE)
-    # TODO: Need to repeat through each iterator if stop_iteration() is true
-    if (stop_iteration(next_elem)) {
-      has_elems[which_iter] <- FALSE
-    }
-    next_elem
   }
 
   it <- list(nextElem=nextElement)
