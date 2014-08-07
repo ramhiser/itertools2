@@ -14,6 +14,8 @@
 * `iroundrobin()`: Iterator that traverses each given iterable in a roundrobin
   order.
 
+* `itabulate()`: Iterator that maps a function to a sequence of numeric values.
+
 ## Utilities
 
 * `consume()`: Consumes the first n elements of an iterator.
