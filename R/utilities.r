@@ -54,3 +54,24 @@ try_nextElem <- function(object, default=NA, silent=TRUE) {
   }
   next_elem
 }
+
+#' Performs a deep copy of an iterator
+#'
+#' This function is useful when an iterator needs to be copied with a new
+#' \code{state} environment.
+#'
+#' @export
+#' @param iterator an iterator object that inherits from class 'iter'
+#' @return a new iterator with its own state
+iter_deepcopy <- function(iterator) {
+  iter_copy <- iterator
+  iter_copy$state <- new.env()
+
+  # Clones iterator's state into iter_copy's state
+  state_vars <- ls(envir=iterator$state)
+  for (var_i in state_vars) {
+    iter_copy$state[[var_i]] <- iterator$state[[var_i]]
+  }
+  
+  iter_copy
+}

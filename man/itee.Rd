@@ -17,6 +17,11 @@ a list of \code{n} iterators
 Constructs a list of \code{n} iterators, each of which iterates through an
 iterable \code{object}.
 }
+\details{
+If the \code{object} is an iterator (i.e., inherits from class \code{iter}),
+\code{n} deep copies of \code{object} are returned. Otherwise, \code{object}
+is passed to \code{\link[iterators]{iter}} \code{n} times.
+}
 \examples{
 # Creates a list of three iterators.
 # Each iterator iterates through 1:5 independently.

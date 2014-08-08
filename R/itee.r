@@ -3,6 +3,10 @@
 #' Constructs a list of \code{n} iterators, each of which iterates through an
 #' iterable \code{object}.
 #'
+#' If the \code{object} is an iterator (i.e., inherits from class \code{iter}),
+#' \code{n} deep copies of \code{object} are returned. Otherwise, \code{object}
+#' is passed to \code{\link[iterators]{iter}} \code{n} times.
+#'
 #' @export
 #' @param object an iterable object
 #' @param n the number of iterables to return
@@ -41,8 +45,19 @@ itee <- function(object, n=2) {
   # TODO: Confirm that efficient buffering is performed for a more complex
   # example. For assistance on this, see this excellent post about how Python's
   # itertools.tee works: http://discontinuously.com/2012/06/inside-python-tee/
-  replicate(n=n,
-            expr=iterators::iter(object),
-            simplify=FALSE)
+
+  # If the 'object' is an iterator, n deep copies of 'object' are returned.
+  # Otherwise, 'object' is passed to iterators::iter 'n' times.
+  if (inherits(object, "iter")) {
+    itee_list <- replicate(n=n,
+                           expr=iter_deepcopy(object),
+                           simplify=FALSE)
+  } else {
+    itee_list <- replicate(n=n,
+                           expr=iterators::iter(object),
+                           simplify=FALSE)
+  }
+
+  itee_list
 }
 

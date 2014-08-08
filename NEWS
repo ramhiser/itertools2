@@ -29,6 +29,8 @@
 
 * `dotproduct()`: Computes the dot product of two iterable objects.
 
+* `iter_deepcopy()`: Performs a deep copy of an iterator.
+
 * `nth()`: Returns the nth item of an iterator, skipping the iterator ahead
   during the process. If the iterator is entirely consumed, a default value is
   returned.
@@ -40,6 +42,10 @@
 ## Miscellaneous
 
 * Fixed a rare issue where `ichain()` was throwing an uncaught exception.
+
+* Resolved an issue with `itee()` when applied to an iterator. Shallow copies
+  were being made, such that each shared a common `state`. The introduction of
+  `iter_deepcopy()` resolved this issue, closing Issue #36.
 
 # itertools 0.1
 
