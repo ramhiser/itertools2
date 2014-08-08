@@ -16,6 +16,13 @@
 
 * `itabulate()`: Iterator that maps a function to a sequence of numeric values.
 
+* `iunique()`: Iterator that extracts the unique elements from an iterable
+  object. This function is an iterator analogue to base::unique.
+
+* `iunique_justseen()`: Iterator that extracts the just-seen unique elements
+  from an iterable object. Only the element just seen is remembered for
+  determining uniqueness.
+
 ## Utilities
 
 * `consume()`: Consumes the first n elements of an iterator.
