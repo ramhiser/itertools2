@@ -17,17 +17,22 @@
 #' it2 <- ichain(1:3, levels(iris$Species))
 #' as.list(it2)
 ichain <- function(...) {
-  iter_list <- lapply(list(...), iter)
+  iter_list <- lapply(list(...), iterators::iter)
   num_args <- length(iter_list)
 
   if (num_args == 0) {
     stop("At least one argument must be supplied.")
   }
 
-  # TODO: Introduce iterators:::hasNext() to circumvent catching StopIteration?
-  #       See the iterators vignette for details.
   arg_i <- 1
+
   nextElem <- function() {
+    # The repeated stop() call circumvents an error that appeared in a unit test
+    # for itertools2::take().
+    if (arg_i > num_args) {
+      stop("StopIteration", call.=FALSE)
+    }
+
     next_elem <- try(iterators::nextElem(iter_list[[arg_i]]), silent=TRUE)
     if (stop_iteration(next_elem)) {
       arg_i <<- arg_i + 1

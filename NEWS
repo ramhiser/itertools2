@@ -37,6 +37,10 @@
 
 * `take()`: Return the first n elements of an iterable object as a list.
 
+## Miscellaneous
+
+* Fixed a rare issue where `ichain()` was throwing an uncaught exception.
+
 # itertools 0.1
 
 ## Iterators
