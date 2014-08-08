@@ -28,7 +28,7 @@ This function corresponds to Python's \code{grouper} function. We chose the
 name \code{ichunk} because it more explicitly defines the function's purpose.
 }
 \examples{
-it <- ichunk(iter(1:5), chunk_size=2)
+it <- ichunk(iterators::iter(1:5), chunk_size=2)
 # List: list(1, 2, 3)
 iterators::nextElem(it)
 # List: list(4, 5, NA)

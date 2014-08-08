@@ -29,8 +29,8 @@ iterators::nextElem(it)
 
 it2 <- iterators::iter(letters)
 # Skips the first 4 elements
-consume(it, 4)
+consume(it2, 4)
 # Returns 'e'
-iterators::nextElem(it)
+iterators::nextElem(it2)
 }
 
