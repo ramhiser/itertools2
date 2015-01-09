@@ -1,6 +1,10 @@
 #' Iterator that generates all permutations of an iterable object.
 #'
-#' Constructs an iterator generates all permutations of an iterable object.
+#' Constructs an iterator generates all permutations of an iterable object. By
+#' default, full-length permutations are generated. If \code{m} is specified,
+#' successive \code{m} length permutations are instead generated.
+#'
+#' The implementation is loosely based on that of Python's itertools.
 #'
 #' @importFrom iterators iter nextElem
 #' @export
@@ -21,7 +25,7 @@
 #' # 24 = 4! permutations of the letters a, b, c, and d
 #' as.list(it2)
 #' 
-ipermutations <- function(object) {
+ipermutations <- function(object, m=NULL) {
   object <- as.vector(object)
   n <- length(object)
 
@@ -30,7 +34,7 @@ ipermutations <- function(object) {
   # The unique indices generate the permutations
   # This approach is similar to how Python's itertools works
   replicate_n <- replicate(n=n, seq_len(n), simplify=FALSE)
-  iter_product <- do.call(iproduct, replicate_n)
+  iter_product <- do.call(itertools2::iproduct, replicate_n)
 
   nextElem <- function() {
     repeat {

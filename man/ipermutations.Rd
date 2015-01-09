@@ -4,7 +4,7 @@
 \alias{ipermutations}
 \title{Iterator that generates all permutations of an iterable object.}
 \usage{
-ipermutations(object)
+ipermutations(object, m = NULL)
 }
 \arguments{
 \item{object}{vector}
@@ -13,7 +13,12 @@ ipermutations(object)
 iterator that generates all permutations of \code{object}
 }
 \description{
-Constructs an iterator generates all permutations of an iterable object.
+Constructs an iterator generates all permutations of an iterable object. By
+default, full-length permutations are generated. If \code{m} is specified,
+successive \code{m} length permutations are instead generated.
+}
+\details{
+The implementation is loosely based on that of Python's itertools.
 }
 \examples{
 it <- ipermutations(1:3)
