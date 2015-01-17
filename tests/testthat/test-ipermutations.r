@@ -25,7 +25,6 @@ test_that("ipermutations matches the output from combinat::permn", {
   ipermutations_rbind <- ipermutations_rbind[ipermutations_order, ]
 
   expect_equal(ipermutations_rbind, permn_rbind)
-  expect_error(nextElem(it), "StopIteration")
 })
 
 test_that("ipermutations generates m-length permutations properly", {
