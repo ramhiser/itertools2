@@ -1,4 +1,4 @@
-library(combinat)
+suppressPackageStartupMessages(library(combinat))
 
 context("ipermutations iterator")
 
@@ -26,4 +26,23 @@ test_that("ipermutations matches the output from combinat::permn", {
 
   expect_equal(ipermutations_rbind, permn_rbind)
   expect_error(nextElem(it), "StopIteration")
+})
+
+test_that("ipermutations generates m-length permutations properly", {
+  it <- ipermutations(letters[1:4], m=2)
+
+  expect_equal(iterators::nextElem(it), c('a', 'b'))
+  expect_equal(iterators::nextElem(it), c('a', 'c'))
+  expect_equal(iterators::nextElem(it), c('a', 'd'))
+  expect_equal(iterators::nextElem(it), c('b', 'a'))
+  expect_equal(iterators::nextElem(it), c('b', 'c'))
+  expect_equal(iterators::nextElem(it), c('b', 'd'))
+  expect_equal(iterators::nextElem(it), c('c', 'a'))
+  expect_equal(iterators::nextElem(it), c('c', 'b'))
+  expect_equal(iterators::nextElem(it), c('c', 'd'))
+  expect_equal(iterators::nextElem(it), c('d', 'a'))
+  expect_equal(iterators::nextElem(it), c('d', 'b'))
+  expect_equal(iterators::nextElem(it), c('d', 'c'))
+
+  expect_error(iterators::nextElem(it), "StopIteration")
 })
