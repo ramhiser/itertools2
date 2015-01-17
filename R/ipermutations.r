@@ -41,8 +41,6 @@ ipermutations <- function(object, m=NULL) {
   # The unique indices generate the permutations
   # This approach is similar to how Python's itertools works
   replicate_n <- replicate(n=m, seq_len(n), simplify=FALSE)
-
-  # We add the permutation length to the list passed to iproduct
   iter_product <- do.call(itertools2::iproduct, replicate_n)
 
   nextElem <- function() {

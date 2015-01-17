@@ -4,10 +4,12 @@
 \alias{icombinations}
 \title{Iterator that generates all combinations of a vector taken m at a time.}
 \usage{
-icombinations(object, m)
+icombinations(object, m, replacement = FALSE)
 }
 \arguments{
 \item{object}{vector}
+
+\item{replacement}{Generate combinations with replacement? Default: no.}
 }
 \value{
 iterator that generates all combinations of \code{object}
@@ -17,9 +19,16 @@ Constructs an iterator generates all combinations of a vector taken \code{m}
 at a time. This function is similar to \code{\link[utils]{combn}}.
 }
 \details{
-The implementation is loosely based on that of Python's itertools.
+By default, the combinations are **without replacement** so that elements are
+not repeated. To generate combinations **with replacement**, set
+\code{replacement=TRUE}.
+
+The function implementation is loosely based on the \code{combinations}
+function from Python's itertools. Combinations with replacement are based on
+\code{combinations_with_replacement} from the same Python library.
 }
 \examples{
+# Combinations without replacement
 it <- icombinations(1:4, m=2)
 
 iterators::nextElem(it) # c(1, 2)
@@ -29,8 +38,22 @@ iterators::nextElem(it) # c(2, 3)
 iterators::nextElem(it) # c(2, 4)
 iterators::nextElem(it) # c(3, 4)
 
-it2 <- icombinations(1:5, m=2)
-as.list(it2)
+# Combinations without replacement
+it <- icombinations(1:4, m=2, replacement=TRUE)
+
+iterators::nextElem(it) # c(1, 1)
+iterators::nextElem(it) # c(1, 2)
+iterators::nextElem(it) # c(1, 3)
+iterators::nextElem(it) # c(1, 4)
+iterators::nextElem(it) # c(2, 2)
+iterators::nextElem(it) # c(2, 3)
+iterators::nextElem(it) # c(2, 4)
+iterators::nextElem(it) # c(3, 3)
+iterators::nextElem(it) # c(3, 4)
+iterators::nextElem(it) # c(4, 4)
+
+it3 <- icombinations(1:5, m=2)
+as.list(it3)
 utils::combn(x=1:5, m=2, simplify=FALSE)
 }
 
