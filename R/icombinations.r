@@ -20,20 +20,23 @@
 #' iterators::nextElem(it) # c(2, 4)
 #' iterators::nextElem(it) # c(3, 4)
 #'
+#' it2 <- icombinations(1:5, m=2)
+#' as.list(it2)
+#' utils::combn(x=1:5, m=2, simplify=FALSE)
+#' 
 icombinations <- function(object, m) {
   object <- as.vector(object)
-  n <- length(object)
   m <- as.integer(m)
 
   # Traverses through all the permutations of object.
   # If the indices are sorted, then return the element.
   # This approach is similar to how Python's itertools works
-  iter_permutations <- itertools2::ipermutations(object, m)
+  iter_permutations <- itertools2::ipermutations(object, m=m)
 
   nextElem <- function() {
     repeat {
       indices <- iterators::nextElem(iter_permutations)
-      if (sort(indices) == indices) {
+      if (all(sort(indices) == indices)) {
         return(object[indices])
       }
     }

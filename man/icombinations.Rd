@@ -28,5 +28,9 @@ iterators::nextElem(it) # c(1, 4)
 iterators::nextElem(it) # c(2, 3)
 iterators::nextElem(it) # c(2, 4)
 iterators::nextElem(it) # c(3, 4)
+
+it2 <- icombinations(1:5, m=2)
+as.list(it2)
+utils::combn(x=1:5, m=2, simplify=FALSE)
 }
 

@@ -2,6 +2,9 @@
 
 ## Iterators
 
+* `icombinations()`: Iterator that generates all combinations of a vector of
+  length `n` taken `m` at a time.
+
 * `ipermutations()`: Iterator that returns all permutations of a vector.
 
 * `itripletwise()`: Iterator that returns elements of an object in triplets.
