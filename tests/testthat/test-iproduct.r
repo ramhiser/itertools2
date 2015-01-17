@@ -11,7 +11,7 @@ test_that("iproduct constructs the Cartesian product of two unnamed numeric vect
   expect_equal(nextElem(it), list(3, 4))
   expect_equal(nextElem(it), list(3, 5))
   expect_equal(nextElem(it), list(3, 6))
-  
+
   expect_error(nextElem(it), "StopIteration")
 })
 
@@ -40,7 +40,7 @@ test_that("iproduct constructs the Cartesian product of two named numeric vector
   expect_equal(nextElem(it), list(a=3, b=4))
   expect_equal(nextElem(it), list(a=3, b=5))
   expect_equal(nextElem(it), list(a=3, b=6))
-  
+
   expect_error(nextElem(it), "StopIteration")
 })
 
@@ -58,3 +58,56 @@ test_that("iproduct constructs the Cartesian product of three named numeric vect
   expect_error(nextElem(it), "StopIteration")
 })
 
+test_that("iproduct constructs the Cartesian product twice of two unnamed numeric vectors", {
+  it <- iproduct(1:3, 4:6, times=2)
+
+  # First Cartesian product
+  expect_equal(nextElem(it), list(1, 4))
+  expect_equal(nextElem(it), list(1, 5))
+  expect_equal(nextElem(it), list(1, 6))
+  expect_equal(nextElem(it), list(2, 4))
+  expect_equal(nextElem(it), list(2, 5))
+  expect_equal(nextElem(it), list(2, 6))
+  expect_equal(nextElem(it), list(3, 4))
+  expect_equal(nextElem(it), list(3, 5))
+  expect_equal(nextElem(it), list(3, 6))
+
+  # Second Cartesian product
+  expect_equal(nextElem(it), list(1, 4))
+  expect_equal(nextElem(it), list(1, 5))
+  expect_equal(nextElem(it), list(1, 6))
+  expect_equal(nextElem(it), list(2, 4))
+  expect_equal(nextElem(it), list(2, 5))
+  expect_equal(nextElem(it), list(2, 6))
+  expect_equal(nextElem(it), list(3, 4))
+  expect_equal(nextElem(it), list(3, 5))
+  expect_equal(nextElem(it), list(3, 6))
+
+  expect_error(nextElem(it), "StopIteration")
+})
+
+test_that("iproduct constructs the Cartesian product twice of three unnamed numeric vectors", {
+  it <- iproduct(1:2, 3:4, 5:6, times=2)
+
+  # First Cartesian product
+  expect_equal(nextElem(it), list(1, 3, 5))
+  expect_equal(nextElem(it), list(1, 3, 6))
+  expect_equal(nextElem(it), list(1, 4, 5))
+  expect_equal(nextElem(it), list(1, 4, 6))
+  expect_equal(nextElem(it), list(2, 3, 5))
+  expect_equal(nextElem(it), list(2, 3, 6))
+  expect_equal(nextElem(it), list(2, 4, 5))
+  expect_equal(nextElem(it), list(2, 4, 6))
+
+  # Second Cartesian product
+  expect_equal(nextElem(it), list(1, 3, 5))
+  expect_equal(nextElem(it), list(1, 3, 6))
+  expect_equal(nextElem(it), list(1, 4, 5))
+  expect_equal(nextElem(it), list(1, 4, 6))
+  expect_equal(nextElem(it), list(2, 3, 5))
+  expect_equal(nextElem(it), list(2, 3, 6))
+  expect_equal(nextElem(it), list(2, 4, 5))
+  expect_equal(nextElem(it), list(2, 4, 6))
+
+  expect_error(nextElem(it), "StopIteration")
+})

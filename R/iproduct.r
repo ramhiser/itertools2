@@ -1,6 +1,7 @@
 #' Iterator that returns the Cartesian product of the arguments.
 #'
-#' Constructs an iterator that is the Cartesian product of each of the arguments.
+#' Constructs an iterator that is the Cartesian product of each of the
+#' arguments.
 #'
 #' Although they share the same end goal, \code{iproduct} can yield drastic
 #' memory savings compared to \code{\link[base]{expand.grid}}.
@@ -8,11 +9,31 @@
 #' @importFrom iterators iter nextElem
 #' @export
 #' @param ... multiple arguments
+#' @param times the number of times the Cartesian product is repeated. By
+#' default, repeated only once.
 #' @return iterator that iterates through each element from the Cartesian
 #' product
-#' 
+#'
 #' @examples
 #' it <- iproduct(x=1:3, y=4:5)
+#' iterators::nextElem(it) # list(x=1, y=4)
+#' iterators::nextElem(it) # list(x=1, y=5)
+#' iterators::nextElem(it) # list(x=2, y=4)
+#' iterators::nextElem(it) # list(x=2, y=5)
+#' iterators::nextElem(it) # list(x=3, y=4)
+#' iterators::nextElem(it) # list(x=3, y=5)
+#'
+#' # Repeats the Cartesian product twice
+#' it <- iproduct(x=1:3, y=4:5, times=2)
+#' # First Cartesian product
+#' iterators::nextElem(it) # list(x=1, y=4)
+#' iterators::nextElem(it) # list(x=1, y=5)
+#' iterators::nextElem(it) # list(x=2, y=4)
+#' iterators::nextElem(it) # list(x=2, y=5)
+#' iterators::nextElem(it) # list(x=3, y=4)
+#' iterators::nextElem(it) # list(x=3, y=5)
+#'
+#' # Second Cartesian product
 #' iterators::nextElem(it) # list(x=1, y=4)
 #' iterators::nextElem(it) # list(x=1, y=5)
 #' iterators::nextElem(it) # list(x=2, y=4)
@@ -25,14 +46,14 @@
 #' a <- 1:2
 #' b <- 3:4
 #' c <- 5:6
-#' it2 <- iproduct(a=a, b=b, c=c)
-#' df_iproduct <- do.call(rbind, as.list(it2))
+#' it3 <- iproduct(a=a, b=b, c=c)
+#' df_iproduct <- do.call(rbind, as.list(it3))
 #' df_iproduct <- data.frame(df_iproduct)
 #'
 #' # Compare df_iproduct with the results from base::expand.grid()
 #' base::expand.grid(a=a, b=b, c=c)
-#' 
-iproduct <- function(...) {
+#'
+iproduct <- function(..., times=1) {
   args_list <- list(...)
   if (length(args_list) == 0) {
     stop("At least one argument must be supplied.")
@@ -45,6 +66,10 @@ iproduct <- function(...) {
   freq <- rev(unname(freq))
   rep_times <- unname(prod(args_lengths) / freq / args_lengths)
 
+  # To repeat the Cartesian product multiple times, the 'rep_times' is simply
+  # scaled by 'times'
+  rep_times <- rep_times * times
+
   # For each element in args_list, an iterator is constructed that repeats each
   # of its values with the proper frequency and cadence.
   args_iters <- mapply(irep,
@@ -54,5 +79,5 @@ iproduct <- function(...) {
                        SIMPLIFY=FALSE)
 
   # Finally, izip's the list of iterators
-  it <- do.call(izip, args=args_iters)
+  do.call(izip, args=args_iters)
 }
