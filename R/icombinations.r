@@ -14,6 +14,7 @@
 #' @importFrom iterators iter nextElem
 #' @export
 #' @param object vector
+#' @param m the length of each combination
 #' @param replacement Generate combinations with replacement? Default: no.
 #' @return iterator that generates all combinations of \code{object}
 #'

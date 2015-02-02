@@ -8,6 +8,9 @@ ipermutations(object, m = NULL)
 }
 \arguments{
 \item{object}{vector}
+
+\item{m}{length of permutations. By default, full-length permutations are
+generated.}
 }
 \value{
 iterator that generates all permutations of \code{object}
@@ -30,7 +33,7 @@ iterators::nextElem(it) # c(3, 2, 1)
 iterators::nextElem(it) # c(2, 3, 1)
 iterators::nextElem(it) # c(2, 1, 3)
 
-it2 <- ipermutations(letters(1:4))
+it2 <- ipermutations(letters[1:4])
 # 24 = 4! permutations of the letters a, b, c, and d
 as.list(it2)
 }

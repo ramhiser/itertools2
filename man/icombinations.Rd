@@ -9,6 +9,8 @@ icombinations(object, m, replacement = FALSE)
 \arguments{
 \item{object}{vector}
 
+\item{m}{the length of each combination}
+
 \item{replacement}{Generate combinations with replacement? Default: no.}
 }
 \value{
