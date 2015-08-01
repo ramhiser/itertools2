@@ -12,20 +12,23 @@
 #' @param start sequence's initial value
 #' @param step sequence's step size
 #' @return sequence's iterator
-#' 
+#'
 #' @examples
 #' it <- icount()
 #' iterators::nextElem(it)
 #' iterators::nextElem(it)
 #' iterators::nextElem(it)
-#' 
+#'
 #' it2 <- icount(start=5.5, step=1.5)
 #' iterators::nextElem(it2)
 #' iterators::nextElem(it2)
 #' iterators::nextElem(it2)
-icount <- function(start=0, step=1) {
+icount <- function(start=0, step=1, stop=NULL) {
   start <- as.numeric(start)
   step <- as.numeric(step)
+  if (!is.null(stop)) {
+    stop <- as.numeric(stop)
+  }
 
   if (length(start) != 1) {
     stop("'start' must be a numeric value of length 1")
@@ -37,6 +40,11 @@ icount <- function(start=0, step=1) {
   current_val <- start - step
   nextElem <- function() {
     current_val <<- current_val + step
+
+    if (!is.null(stop) && current_val > stop) {
+      stop("StopIteration", call.=FALSE)
+    }
+
     current_val
   }
 
@@ -44,4 +52,3 @@ icount <- function(start=0, step=1) {
   class(it) <- c("abstractiter", "iter")
   it
 }
-

@@ -4,7 +4,7 @@
 \alias{icount}
 \title{Iterator of neverending numeric sequence with initial value and step size}
 \usage{
-icount(start = 0, step = 1)
+icount(start = 0, step = 1, stop = NULL)
 }
 \arguments{
 \item{start}{sequence's initial value}
