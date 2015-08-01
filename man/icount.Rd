@@ -2,7 +2,7 @@
 % Please edit documentation in R/icount.r
 \name{icount}
 \alias{icount}
-\title{Iterator of neverending numeric sequence with initial value and step size}
+\title{Iterator of numeric sequence with initial value and step size}
 \usage{
 icount(start = 0, step = 1, stop = NULL)
 }
@@ -10,13 +10,17 @@ icount(start = 0, step = 1, stop = NULL)
 \item{start}{sequence's initial value}
 
 \item{step}{sequence's step size}
+
+\item{stop}{optional stopping point to sequence}
 }
 \value{
 sequence's iterator
 }
 \description{
-Constructs an iterator that generates a neverending sequence of evenly spaced
-values starting with \code{icount}. The step size is given by \code{step}.
+Constructs an iterator that generates a sequence of evenly spaced values
+starting with \code{icount}. The step size is given by \code{step}. By
+default, the sequence is neverending unless the optional \code{stop} is
+provided.
 }
 \details{
 NOTE: Use a negative \code{step} size to generate decreasing sequences.
@@ -34,5 +38,10 @@ it2 <- icount(start=5.5, step=1.5)
 iterators::nextElem(it2)
 iterators::nextElem(it2)
 iterators::nextElem(it2)
+
+it3 <- icount(start=1, stop=3)
+iterators::nextElem(it3)
+iterators::nextElem(it3)
+iterators::nextElem(it3)
 }
 
